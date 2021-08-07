@@ -1,6 +1,6 @@
 module API
     module V1
-      class ApiKeys < Grape::API
+      class APIKeys < Grape::API
         include API::V1::Defaults
         resource :api_keys do
           desc "Return all api keys"

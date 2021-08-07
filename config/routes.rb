@@ -191,6 +191,6 @@ Rails.application.routes.draw do
 
 
   # For mobile API Endpoint
-  #mount API::Base, at: "/"
+  mount API::Base, at: "/"
 
 end

@@ -2,7 +2,7 @@ class InvitationMailer < ActionMailer::Base
     #include SmtpHelper
     helper :application
         
-    add_template_helper EmailHelper
+    #add_template_helper EmailHelper
     #add_template_helper ApplicationHelper
     #default from: "<salut.amos@gmail.com>"
     default from: "#{SmtpConfig.first.smtp_user_name}" if SmtpConfig.first.present?

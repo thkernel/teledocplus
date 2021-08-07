@@ -1,5 +1,5 @@
 require "rake"
-Digicard::Application.load_tasks
+Teledocplus::Application.load_tasks
 class UtilitiesController < ApplicationController
     #authorize_resource
     before_action :authenticate_user!
