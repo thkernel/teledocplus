@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-md-3">
+    <div class="form-group">
+      <%= f.label :country, "Pays", class: "required" %>
+      <%= f.collection_select(:country, ISO3166::Country.countries.sort_by(&:name).collect { |c| [ c.name, "#{c.name}" ] }, :first, :last, {include_blank: 'Pays'}, class: "form-control", 'data-style': 'form-control', required: true) %>  
+    </div>
+  </div>
+
+ <div class="col-md-3">
+    <div class="form-group">
+      <%= f.label :city, "Ville", class: "required" %>
+      <%= f.text_field :city, class: "form-control", placeholder: "Ville", required: true %>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="form-group">
+      <%= f.label :neighborhood, "Quartier" %>
+      <%= f.text_field :neighborhood,  class: "form-control", placeholder: "Quartier"  %>
+    </div>
+  </div>
+
+   <div class="col-md-3">
+    <div class="form-group">
+      <%= f.label :phone_1, "Téléphone" %>
+      <%= f.text_field :phone_1,  class: "form-control", placeholder: "Téléphone"  %>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="form-group">
+        <%= f.label :address_1, "Adresse" %>
+        <%= f.text_field :address_1,  class: "form-control", placeholder: "Adresse"  %>
+
+    </div>
+  </div>
+
+ <div class="col-md-2">
+    <div class="form-group">
+      <%= f.label :zip_code, "Code postal" %>
+      <%= f.text_field :zip_code, class: "form-control", placeholder: "Code postal" %>
+    </div>
+  </div>
+
+  <div class="col-md-2">
+    <div class="form-group">
+      <%= f.label :po_box, "Boîte postale" %>
+      <%= f.text_field :po_box,  class: "form-control", placeholder: "Boîte postale"  %>
+    </div>
+  </div>
+
+  <div class="col-md-2">
+    <div class="form-group">
+      <%= f.label :street, "Rue" %>
+      <%= f.text_field :street, class: "form-control", placeholder: "Rue" %>
+    </div>
+  </div>
+
+  <div class="col-md-2">
+    <div class="form-group">
+      <%= f.label :door, "Porte" %>
+      <%= f.text_field :door,  class: "form-control", placeholder: "Porte"  %>
+    </div>
+  </div>
+</div>

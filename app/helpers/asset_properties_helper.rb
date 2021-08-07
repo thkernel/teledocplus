@@ -1,0 +1,2 @@
+module AssetPropertiesHelper
+end

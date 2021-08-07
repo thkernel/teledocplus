@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Contact Forms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Uid</th>
+      <th>Full name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Object</th>
+      <th>Message</th>
+      <th>Read</th>
+      <th>Read at</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contact_forms.each do |contact_form| %>
+      <tr>
+        <td><%= contact_form.uid %></td>
+        <td><%= contact_form.full_name %></td>
+        <td><%= contact_form.phone %></td>
+        <td><%= contact_form.email %></td>
+        <td><%= contact_form.object %></td>
+        <td><%= contact_form.message %></td>
+        <td><%= contact_form.read %></td>
+        <td><%= contact_form.read_at %></td>
+        <td><%= contact_form.status %></td>
+        <td><%= link_to 'Show', contact_form %></td>
+        <td><%= link_to 'Edit', edit_contact_form_path(contact_form) %></td>
+        <td><%= link_to 'Destroy', contact_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Contact Form', new_contact_form_path %>

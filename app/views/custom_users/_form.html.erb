@@ -1,0 +1,67 @@
+<%= form_with(model: user, url: (user.new_record? ? create_user_path : update_user_path), local: false) do |f| %>
+		<div class="modal-body">
+		 	<ul class="errors">
+    		</ul>
+			
+				
+			<%= f.fields_for :profile do |p| %>
+				<!-- Fieldset informations -->
+				<fieldset>
+					<legend>Informations </legend>
+					<div class="row">
+
+                        <div class="form-group col-md-4">
+                            <%= p.label "Prénom" %>
+                            <%= p.text_field :first_name, class: "form-control", placeholder: "Prénom", required: true %>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <%= p.label "Nom" %>
+                            <%= p.text_field :last_name , class: "form-control", placeholder: "Nom" , required: true%>
+                        </div>
+						
+
+					
+                        <div class="form-group col-md-4">
+							<%= p.label :gender, "Genre", class: "required" %> 
+							<%= p.select :gender , GENDERS, {prompt: "Sélectionner"}, class: "form-control", style: "width: 100%" , required: true %>
+						
+						</div>
+					</div>
+
+                    
+				</fieldset>
+			<% end %>
+
+			
+			<div class="form-group">
+				<%= f.label :email %><br />
+				<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "E-mail", required: true %>
+			</div>
+				
+			<div class="form-group">
+				<%= f.label "Profil" %>
+				<%= f.collection_select(:role_id, @roles,  :id, :name , {prompt: "Sélectionner un profil"}, class: "form-control", style: "width: 100%;", required: true) %>
+										
+			</div>
+
+				
+			<div class="form-group">
+				<%= f.label :password %>
+				<% if @minimum_password_length %>
+				<em>(<%= @minimum_password_length %> characters minimum)</em>
+				<% end %><br />
+				<%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Mot de passe", required: true %>
+			</div>
+		
+			<div class="form-group">
+				<%= f.label :password_confirmation %><br />
+				<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirmation du mot de passe", required: true %>
+			</div>
+				
+		</div><!-- modal body -->
+	<div class="modal-footer">
+		<%= link_to "Annuler", "#", class: "btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", data: {dismiss: "modal"} %>
+		<%= f.submit  class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+	</div>
+<% end %>

@@ -1,0 +1,2 @@
+module PostCategoryPostsHelper
+end

@@ -1,0 +1,47 @@
+ <div class="card shadow-base bd-0 pd-20 ht-100p mg-b-20">
+        <div class="row ht-100p">
+            <div class="col-md-3">
+                <%= link_to ad_show_path(ad) do %>
+                    <%= ad_thumbnail(ad) %>
+                <% end %>
+                <!--
+                <img src="https://via.placeholder.com/600x800" class="wd-100p ht-100p object-fit-cover rounded" alt="Image">
+                -->
+            </div><!-- col-5 -->
+            <div class="col-md-9 pd-y-10 pd-r-30 d-flex align-items-start flex-column">
+            
+                
+                <h5 class="tx-normal tx-roboto lh-3 mg-b-10"> 
+                    <%= link_to ad.title, ad_show_path(ad.slug), class: "tx-inverse hover-info" %>  
+                </h5>
+                
+                <p class="tx-13 mg-b-10 mg-md-b-auto">
+                    <span class="tx-info mg-r-10">
+
+                        <%= "Pub: #{ad.created_at.strftime("%d/%m/%Y")}" %>
+                    </span>
+                    <span class="tx-info mg-r-10">
+                        <%= "Exp: #{ad.expiration_date.strftime("%d/%m/%Y")}" %>
+                    </span>
+                    <span class="tx-info mg-r-10">
+                        <%= "Par: #{user_full_name(ad.user_id)}" %>
+                    </span>
+                    
+                </p>                  
+
+                <p class="tx-14 mg-b-10">
+                    
+                    <%= Sanitize.fragment(ad.content.truncate_words(20, omission: '...')) %>
+
+                </p>
+
+                <!--
+                <p class="tx-13 mg-b-10 mg-md-b-auto">
+                    <a href="" class="tx-info mg-r-10">22 Likes</a>
+                    <a href="" class="tx-info">3 Comments</a>
+                </p> -->
+
+                
+            </div><!-- col-6 -->
+        </div><!-- row -->
+    </div>

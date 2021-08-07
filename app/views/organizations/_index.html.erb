@@ -1,0 +1,23 @@
+<% @organizations.each do |organization| %>
+      <tr>
+        <td><%= organization.name %></td>
+        <td><%= organization.organization_type.name %></td>
+        
+       <td>
+        <div class="action-buttons">
+        	
+            <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'),  edit_organization_path(organization), title: "Modifier", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), organization_delete_path(organization), remote: true, title: "Supprimer", class: "delete" %>
+
+<%= link_to raw('<i class="fa fa-home" aria-hidden="true"></i>'), organization_services_path(organization_id: organization.uid), title: "Services" %>
+<%= link_to raw('<i class="fa fa-users" aria-hidden="true"></i>'), organization_members_path(organization_id: organization.uid), title: "Membres" %>
+</div>
+</td>
+      </tr>
+    <% end %>

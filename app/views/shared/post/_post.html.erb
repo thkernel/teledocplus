@@ -1,0 +1,33 @@
+ <div class="card">
+    <div class="card-body">
+        <div class="card-thumbnail">
+            <%= link_to post_show_path(post.slug) do %>
+                <%= post_thumbnail(post) %>
+            <% end %>
+        </div>
+        <div class="card-title">
+            <h5> <%= link_to post.title, post_show_path(post.slug) %>  </h5>                         
+        </div>
+            
+        <div class="excerpt label-wrap label-right hide-on-list">
+                              
+        </div>
+       
+        
+        <div class="item-footer">
+           
+
+            <div class="item-author">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <%= user_full_name(post.user_id)%>
+            </div>
+           
+             <div class="item-view pull-right">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+                <%= post.views.count %>
+            </div>
+        </div>
+        
+            
+    </div>
+</div>

@@ -1,0 +1,58 @@
+ <div class="card">
+    <div class="card-body">
+        <div class="card-thumbnail">
+            <%= link_to property_show_path(property) do %>
+                <%= property_thumbnail(property) %>
+            <% end %>
+        </div>
+        <div class="card-title">
+            <h5> <%= link_to property.name, property_show_path(property) %>  </h5>                         
+        </div>
+            
+        <div class="label-wrap label-right hide-on-list">
+            <span class="label-status label-status-7 label label-default">
+                <%= offer_type(property.offer_type_id).name %>
+            </span>
+            <span class="label label-default status-<%= property.status %>">
+                
+                <%= property_type(property.property_type_id).name %>
+
+            </span>                    
+        </div>
+        <div class="price">
+            
+            <div class="item-price">
+                <i class="fa fa-money" aria-hidden="true"></i>
+                <%= "#{number_with_precision(property.price, delimiter: " ", separator: "", precision: 0)} F CFA/#{unity(property.unity_id).name}" %>
+            </div>
+
+            
+        </div>	
+        <div class="property-address">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <%= property.address.neighborhood %>, <%= property.address.city %>
+        </div>
+        
+        <div class="item-footer">
+            <!--
+            <div class="item-date">
+                
+                    <i class="fa fa-calendar"></i>
+                <%= time_ago_in_words(property.created_at) %>
+                
+            </div>-->
+
+            <div class="item-author">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <%= user_full_name(property.user_id)%>
+            </div>
+           
+             <div class="item-view pull-right">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+                <%= property.views.count %>
+            </div>
+        </div>
+        
+            
+    </div>
+</div>

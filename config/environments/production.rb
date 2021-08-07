@@ -60,7 +60,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "teledocplus_production"
+  # config.active_job.queue_name_prefix = "softwinds_production"
 
   config.action_mailer.perform_caching = false
 
@@ -117,4 +117,30 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
+    Rails.application.routes.default_url_options[:host] = 'https://teledocplus.ml'
+
+  config.action_mailer.default_url_options = { protocol: "https", host: Rails.application.credentials.dig(:email, :production, :host)  }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              Rails.application.credentials.dig(:email, :production, :address) ,
+    port:                 Rails.application.credentials.dig(:email, :production, :port) ,
+    domain:               Rails.application.credentials.dig(:email, :production, :domain) ,
+    user_name:            Rails.application.credentials.dig(:email, :production, :user_name) ,
+    password:             Rails.application.credentials.dig(:email, :production, :password) ,
+    authentication:       Rails.application.credentials.dig(:email, :production, :authentication) ,
+    enable_starttls_auto: Rails.application.credentials.dig(:email, :production, :enable_starttls_auto)  ,
+    :ssl => Rails.application.credentials.dig(:email, :production, :ssl) 
+  }
+
+   
+
+   #Credentials requirment
+  config.require_master_key = true
+  # Added to customize error page
+  config.exceptions_app = self.routes
+
 end

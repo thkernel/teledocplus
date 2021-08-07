@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @contact_form.uid %>
+</p>
+
+<p>
+  <strong>Full name:</strong>
+  <%= @contact_form.full_name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @contact_form.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @contact_form.email %>
+</p>
+
+<p>
+  <strong>Object:</strong>
+  <%= @contact_form.object %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @contact_form.message %>
+</p>
+
+<p>
+  <strong>Read:</strong>
+  <%= @contact_form.read %>
+</p>
+
+<p>
+  <strong>Read at:</strong>
+  <%= @contact_form.read_at %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @contact_form.status %>
+</p>
+
+<%= link_to 'Edit', edit_contact_form_path(@contact_form) %> |
+<%= link_to 'Back', contact_forms_path %>
