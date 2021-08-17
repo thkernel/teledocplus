@@ -1,0 +1,17 @@
+<% @structure_types.each do |structure_type| %>
+    <tr>
+    <td><%= structure_type.name %></td>
+    <td>
+			<div class="action-buttons">
+				<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_structure_type_path(structure_type), title: "Modifier", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), structure_type_delete_path(structure_type), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+    </tr>
+<% end %>

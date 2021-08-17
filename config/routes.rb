@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
 
+  resources :heart_failure_monitorings
+  resources :hta_monitorings
+  resources :diabete_monitorings
+  resources :medication_schedules
+  resources :prescription_items
+  resources :prescriptions
   resources :contact_forms
   get "pricing/" => "subscription_packs#pricing", as: :pricing
   get "portfolio/cards/:portfolio_id" => "cards#index", as: :portfolio_cards

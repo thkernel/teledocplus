@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Region:</strong>
+  <%= @locality.region %>
+</p>
+
+<p>
+  <strong>Cercle:</strong>
+  <%= @locality.cercle %>
+</p>
+
+<p>
+  <strong>Commune:</strong>
+  <%= @locality.commune %>
+</p>
+
+<p>
+  <strong>Village:</strong>
+  <%= @locality.village %>
+</p>
+
+<p>
+  <strong>Neighbourhood:</strong>
+  <%= @locality.neighbourhood %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @locality.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @locality.user %>
+</p>
+
+<%= link_to 'Edit', edit_locality_path(@locality) %> |
+<%= link_to 'Back', localities_path %>

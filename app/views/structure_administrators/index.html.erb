@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Structure Administrators</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Structure</th>
+      <th>Profile</th>
+      <th>Administrator</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @structure_administrators.each do |structure_administrator| %>
+      <tr>
+        <td><%= structure_administrator.structure %></td>
+        <td><%= structure_administrator.profile %></td>
+        <td><%= structure_administrator.administrator %></td>
+        <td><%= structure_administrator.user %></td>
+        <td><%= link_to 'Show', structure_administrator %></td>
+        <td><%= link_to 'Edit', edit_structure_administrator_path(structure_administrator) %></td>
+        <td><%= link_to 'Destroy', structure_administrator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Structure Administrator', new_structure_administrator_path %>

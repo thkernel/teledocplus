@@ -1,0 +1,21 @@
+<% @localities.each do |locality| %>
+      <tr>
+      <td><%= country(locality.country_id).name %></td>
+        <td><%= locality.region %></td>
+        <td><%= locality.city %></td>
+       <td>
+			<div class="action-buttons">
+              
+
+				<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_locality_path(locality), title: "Modifier", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), locality_delete_path(locality), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+      </tr>
+    <% end %>

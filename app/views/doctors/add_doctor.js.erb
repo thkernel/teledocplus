@@ -1,0 +1,7 @@
+<% if flash[:alert].present? %>
+$('.errors_wrapper').html("<%= escape_javascript(render 'layouts/partials/flash_messages', :flash => flash) %>");
+
+<% else %>
+$(".doctors").html("<%= escape_javascript(render 'index') %>");
+  $("#doctor-modal").modal("hide");
+  <% end %>

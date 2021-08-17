@@ -5,8 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# Add initial role in database.
-
 
 # Capistrano-rails-collection cammands
 #cap production rails:rake:log:clear
@@ -18,23 +16,18 @@
 #cap production rails:rake:db:migrate
 #cap production rails:rake:db:rollback
 
-
-# Roles
-
 unless Role.all.present?
     roles = Role.create(
         [
             {name: "superuser"},
-            {name: "root"},
-            {name: "guest"},
-            {name: "user"},
-            {name: "agent"},
-            {name: "demo"},
-
-
-
+            {name: "Administrateur"},
+            {name: "Assistant"},
+            {name: "Manager"},
+            {name: "Patient"},
+            {name: "Médedcin"},
+            {name: "Structure"},
+            {
             
-
         ])
 else
     roles = Role.all
@@ -43,14 +36,13 @@ end
 
 
 
+
 # Users
 unless User.all.present?
     users = User.create([
-        {login: "superuser",  email: "superuser@gmail.com",  password: "AMOSXZIBITDE88", password_confirmation: "AMOSXZIBITDE88", role_id:  Role.find_by(name: "superuser").id},
-        {login: "root",  email: "root@gmail.com",  password: "AMOSXZIBITDE88", password_confirmation: "AMOSXZIBITDE88", role_id: Role.find_by(name: "root").id},
-        {login: "user",  email: "user@gmail.com",  password: "AMOSXZIBITDE88", password_confirmation: "AMOSXZIBITDE88", role_id:  Role.find_by(name: "user").id},
-        {login: "guest",  email: "guest@gmail.com",  password: "AMOSXZIBITDE88", password_confirmation: "AMOSXZIBITDE88", role_id:  Role.find_by(name: "guest").id},
-        {login: "demo",  email: "demo@gmail.com",  password: "demo@2021", password_confirmation: "demo@2021", role_id: Role.find_by(name: "superuser").id}
+        {login: "superuser",  email: "superuser@gmail.com",  password: "AMOSXZIBITDE88", password_confirmation: "AMOSXZIBITDE88", role_id: Role.find_by(name: "superuser").id},
+        {login: "teledocplus", email: "teledocplus@gmail.com", password: "Root@2021@#!*", password_confirmation: "Root@2021@#!*", role_id: Role.find_by(name: "superuser").id},
+        {login: "kolane",  email: "kolanefrederic@gmail.com",  password: "Root@2021@#!*", password_confirmation: "Root@2021@#!*", role_id: Role.find_by(name: "Administrateur").id}
 
 
     
@@ -60,21 +52,185 @@ else
 end
 
 
-
-unless Profile.all.present?
-    profile = Profile.create([
+#Country
+unless Country.all.present?
+    countries = Country.create([
         {
-            first_name: "Amos",  
-            last_name: "DEMBELE",
-            user_id: users.first.id
+            name: "Mali", 
+            user_id: users.first.id,
+            
+             
         },
         {
-            first_name: "Alassane",  
-            last_name: "BABY",
-            user_id: users.last.id
+            name: "Togo", 
+            user_id: users.last.id,
+            
+        },
+        {
+            name: "Bénin", 
+            user_id: users.last.id,
+            
+        }
+    
+    ])
+else  
+    countries = Country.all
+
+end
+
+
+
+#Profiles
+unless Profile.all.present?
+    profiles = Profile.create([
+        {
+            first_name: "Amos", 
+            last_name: "DEMBELE",
+            phone: "00000000",
+            country_id: countries.first.id,
+            locality: "Bamako",
+            user_id: users.first.id,
+            
+             
+        },
+        {
+            first_name: "Kolane", 
+            last_name: "Fréderick",
+            phone: "11111111",
+            country_id: countries.first.id,
+            locality: "Bamako",
+            user_id: users.last.id,
+            
+        },
+        {
+            first_name: "Ko-Santé+", 
+            last_name: "SARL",
+            phone: "22222222",
+            country_id: countries.first.id,
+            locality: "Bamako",
+            user_id: User.find_by(login: "teledocplus").id,
+            
         }
     
     ])
 
 end
+
+
+#Strcuture types
+unless StructureType.all.present?
+    structure_types = StructureType.create(
+        [
+            {name: "Laboratoire", user_id: users.last.id},
+            {name: "Hôpital", user_id: users.last.id},
+            {name: "Clinique", user_id: users.last.id},
+            {name: "Polyclinique", user_id: users.last.id},
+            {name: "Centre de radiologie", user_id: users.last.id},
+            {name: "Cabinet médical", user_id: users.last.id}
+
+            
+          
+
+
+        ])
+else
+    structure_types = StructureType.all
+
+end
+
+
+#Specialities
+unless Speciality.all.present?
+    speciality = Speciality.create(
+        [
+            {name: "Acuponcteur", user_id: users.last.id},
+            {name: "Anesthésiste-réanimateur", user_id: users.last.id},
+            {name: "Infirmier", user_id: users.last.id},
+            {name: "Onco-pédiatre", user_id: users.last.id},
+            {name: "Audioprothésiste", user_id: users.last.id},
+            {name: "Cardiologue", user_id: users.last.id},
+            {name: "Chiropracteur", user_id: users.last.id}, 
+            {name: "Chirurgien", user_id: users.last.id}, 
+            {name: "Chirurgien-dentiste", user_id: users.last.id}, 
+            {name: "Dermatologue", user_id: users.last.id}, 
+            {name: "Diététicien", user_id: users.last.id}, 
+            {name: "Dentiste", user_id: users.last.id}, 
+            {name: "Ergothérapeute", user_id: users.last.id}, 
+            {name: "Gynécologue-obstétricien", user_id: users.last.id}, 
+            {name: "Kinésithérapeute", user_id: users.last.id},
+            {name: "Médecin généraliste", user_id: users.last.id}, 
+            {name: "Médecin légiste", user_id: users.last.id}, 
+            {name: "Ophtalmologue", user_id: users.last.id}, 
+            {name: "Opticien-lunetier", user_id: users.last.id}, 
+            {name: "Orthésiste", user_id: users.last.id}, 
+            {name: "Orthophoniste", user_id: users.last.id}, 
+            {name: "Orthoptiste", user_id: users.last.id}, 
+            {name: "Ostéopathe", user_id: users.last.id}, 
+            {name: "Pédiatre", user_id: users.last.id}, 
+            {name: "Pédicure-podologue", user_id: users.last.id}, 
+            {name: "Pédopsychiatre", user_id: users.last.id}, 
+            {name: "Pharmacien", user_id: users.last.id}, 
+            {name: "Psychanalyste", user_id: users.last.id}, 
+            {name: "Psychiatre", user_id: users.last.id}, 
+            {name: "Psychologue", user_id: users.last.id}, 
+            {name: "Psychomotricien", user_id: users.last.id}, 
+            {name: "Puériculteur", user_id: users.last.id}, 
+            {name: "Radiologue", user_id: users.last.id}, 
+            {name: "Sage-Femme", user_id: users.last.id}, 
+            {name: "Pneumologue", user_id: users.last.id}, 
+            {name: "Chirurgien-Pédiatre", user_id: users.last.id}, 
+            {name: "Neurologue", user_id: users.last.id}, 
+            {name: "Néphrologue", user_id: users.last.id}, 
+            {name: "Urologue", user_id: users.last.id}, 
+            {name: "Urgentiste", user_id: users.last.id}, 
+            {name: "Gastro-entérologue", user_id: users.last.id}, 
+            {name: "Médecin interniste", user_id: users.last.id}, 
+            {name: "Diabétologue", user_id: users.last.id}, 
+            {name: "Hématologue", user_id: users.last.id}, 
+            {name: "Neurochirurgien", user_id: users.last.id}, 
+            {name: "Médecin de famille", user_id: users.last.id}, 
+            {name: "Traumatologue", user_id: users.last.id}, 
+            {name: "Rhumatologue", user_id: users.last.id}, 
+            {name: "Médecin communautaire", user_id: users.last.id}
+             
+
+
+
+
+
+            
+          
+
+
+        ])
+else
+    specialities = Speciality.all
+
+end
+
+#Structures
+unless Structure.all.present?
+    structures = Structure.create([
+        {
+            name: "Ko-Sante", 
+            address: "Koulouba",
+            phone: "00000000",
+            locality: "Bamako",
+            user_id: User.find_by(login: "kolane").id
+             
+        }
+    
+    ])
+else
+    structures = Structure.all
+
+end
+
+
+
+
+
+
+
+
 

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Structure:</strong>
+  <%= @structure_profile.structure %>
+</p>
+
+<p>
+  <strong>Profile:</strong>
+  <%= @structure_profile.profile %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @structure_profile.status %>
+</p>
+
+<%= link_to 'Edit', edit_structure_profile_path(@structure_profile) %> |
+<%= link_to 'Back', structure_profiles_path %>

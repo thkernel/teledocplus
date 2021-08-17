@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Diabete Monitorings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Uid</th>
+      <th>Patient</th>
+      <th>Glycemie a jeun</th>
+      <th>Sueurs</th>
+      <th>Sensation de faim</th>
+      <th>Tremblement</th>
+      <th>Vertige</th>
+      <th>Irritabilite</th>
+      <th>Polyurie majoree</th>
+      <th>Fatigue majoree</th>
+      <th>Amaigrissement</th>
+      <th>Comments</th>
+      <th>Status</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @diabete_monitorings.each do |diabete_monitoring| %>
+      <tr>
+        <td><%= diabete_monitoring.uid %></td>
+        <td><%= diabete_monitoring.patient_id %></td>
+        <td><%= diabete_monitoring.glycemie_a_jeun %></td>
+        <td><%= diabete_monitoring.sueurs %></td>
+        <td><%= diabete_monitoring.sensation_de_faim %></td>
+        <td><%= diabete_monitoring.tremblement %></td>
+        <td><%= diabete_monitoring.vertige %></td>
+        <td><%= diabete_monitoring.irritabilite %></td>
+        <td><%= diabete_monitoring.polyurie_majoree %></td>
+        <td><%= diabete_monitoring.fatigue_majoree %></td>
+        <td><%= diabete_monitoring.amaigrissement %></td>
+        <td><%= diabete_monitoring.comments %></td>
+        <td><%= diabete_monitoring.status %></td>
+        <td><%= diabete_monitoring.user_id %></td>
+        <td><%= link_to 'Show', diabete_monitoring %></td>
+        <td><%= link_to 'Edit', edit_diabete_monitoring_path(diabete_monitoring) %></td>
+        <td><%= link_to 'Destroy', diabete_monitoring, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Diabete Monitoring', new_diabete_monitoring_path %>

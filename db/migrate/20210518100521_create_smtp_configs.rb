@@ -1,4 +1,4 @@
-class CreateSmtpConfigs < ActiveRecord::Migration[5.2]
+class CreateSmtpConfigs < ActiveRecord::Migration[6.1]
   def change
     create_table :smtp_configs do |t|
       t.string :smtp_host

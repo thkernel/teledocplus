@@ -1,0 +1,17 @@
+<% @specialities.each do |speciality| %>
+    <tr>
+    <td><%= speciality.name %></td>
+     <td>
+			<div class="action-buttons">
+				<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_speciality_path(speciality), title: "Modifier", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), speciality_delete_path(speciality), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+    </tr>
+<% end %>

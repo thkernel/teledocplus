@@ -1,0 +1,47 @@
+<%= form_with(model: hta_monitoring) do |form| %>
+  <% if hta_monitoring.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(hta_monitoring.errors.count, "error") %> prohibited this hta_monitoring from being saved:</h2>
+
+      <ul>
+        <% hta_monitoring.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :patient_id %>
+    <%= form.text_field :patient_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tas %>
+    <%= form.text_field :tas %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tad %>
+    <%= form.text_field :tad %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comments %>
+    <%= form.text_area :comments %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

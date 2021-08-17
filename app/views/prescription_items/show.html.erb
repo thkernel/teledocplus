@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @prescription_item.uid %>
+</p>
+
+<p>
+  <strong>Prescription:</strong>
+  <%= @prescription_item.prescription_id %>
+</p>
+
+<p>
+  <strong>Medicament:</strong>
+  <%= @prescription_item.medicament %>
+</p>
+
+<p>
+  <strong>Posologie:</strong>
+  <%= @prescription_item.posologie %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @prescription_item.comment %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @prescription_item.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @prescription_item.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_prescription_item_path(@prescription_item) %> |
+<%= link_to 'Back', prescription_items_path %>

@@ -13,52 +13,92 @@
 
   <div class="field">
     <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+    <%= form.text_field :first_name, id: :profile_first_name %>
   </div>
 
   <div class="field">
     <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+    <%= form.text_field :last_name, id: :profile_last_name %>
   </div>
 
   <div class="field">
     <%= form.label :gender %>
-    <%= form.text_field :gender %>
+    <%= form.text_field :gender, id: :profile_gender %>
   </div>
 
   <div class="field">
-    <%= form.label :profession %>
-    <%= form.text_field :profession %>
-  </div>
-
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
-  </div>
-
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= form.label :country %>
-    <%= form.text_field :country %>
+    <%= form.label :birth_date %>
+    <%= form.date_select :birth_date, id: :profile_birth_date %>
   </div>
 
   <div class="field">
     <%= form.label :city %>
-    <%= form.text_field :city %>
+    <%= form.text_field :city, id: :profile_city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country %>
+    <%= form.text_field :country, id: :profile_country %>
   </div>
 
   <div class="field">
     <%= form.label :about %>
-    <%= form.text_area :about %>
+    <%= form.text_area :about, id: :profile_about %>
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.label :marital_status %>
+    <%= form.text_field :marital_status, id: :profile_marital_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cut %>
+    <%= form.text_field :cut, id: :profile_cut %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weight %>
+    <%= form.text_field :weight, id: :profile_weight %>
+  </div>
+
+  <div class="field">
+    <%= form.label :eyes %>
+    <%= form.text_field :eyes, id: :profile_eyes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hair %>
+    <%= form.text_field :hair, id: :profile_hair %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sexual_orientation %>
+    <%= form.text_field :sexual_orientation, id: :profile_sexual_orientation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :occupation %>
+    <%= form.text_field :occupation, id: :profile_occupation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :astrology %>
+    <%= form.text_field :astrology, id: :profile_astrology %>
+  </div>
+
+  <div class="field">
+    <%= form.label :region %>
+    <%= form.text_field :region, id: :profile_region %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nationality %>
+    <%= form.text_field :nationality, id: :profile_nationality %>
+  </div>
+
+  <div class="field">
+    <%= form.label :purpose %>
+    <%= form.text_field :purpose, id: :profile_purpose %>
   </div>
 
   <div class="actions">

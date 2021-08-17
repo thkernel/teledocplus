@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Structure:</strong>
+  <%= @admin_structure.structure %>
+</p>
+
+<p>
+  <strong>Profile:</strong>
+  <%= @admin_structure.profile %>
+</p>
+
+<p>
+  <strong>Administrator:</strong>
+  <%= @admin_structure.administrator %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @admin_structure.user %>
+</p>
+
+<%= link_to 'Edit', edit_admin_structure_path(@admin_structure) %> |
+<%= link_to 'Back', admin_structures_path %>

@@ -1,0 +1,10 @@
+$("ul.errors").html("");
+<% if @locality.errors.any? %>
+  <% @locality.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"));
+  <% end %>
+<% else %>
+  $(".localities").html("<%= escape_javascript(render 'index') %>");
+  $("#locality-modal").modal("hide");
+ 
+<% end %>

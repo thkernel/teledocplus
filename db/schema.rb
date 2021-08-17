@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_07_070816) do
+ActiveRecord::Schema.define(version: 2021_11_22_114030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 2021_08_07_070816) do
     t.text "description"
     t.string "status"
     t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_activity_fields_on_user_id"
   end
 
@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(version: 2021_08_07_070816) do
     t.float "latitude"
     t.float "longitude"
     t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
   end
 
@@ -76,10 +76,29 @@ ActiveRecord::Schema.define(version: 2021_08_07_070816) do
     t.integer "user_id", null: false
     t.boolean "active", default: true, null: false
     t.datetime "expires_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["access_token"], name: "index_api_keys_on_access_token", unique: true
     t.index ["user_id"], name: "index_api_keys_on_user_id"
+  end
+
+  create_table "appointments", force: :cascade do |t|
+    t.bigint "patient_id"
+    t.bigint "doctor_id"
+    t.string "reason"
+    t.string "day"
+    t.time "start_time"
+    t.time "end_time"
+    t.text "content"
+    t.boolean "validated"
+    t.datetime "validation_date"
+    t.boolean "canceled"
+    t.datetime "canceled_date"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
+    t.index ["patient_id"], name: "index_appointments_on_patient_id"
   end
 
   create_table "ckeditor_assets", force: :cascade do |t|
@@ -88,23 +107,64 @@ ActiveRecord::Schema.define(version: 2021_08_07_070816) do
     t.integer "data_file_size"
     t.string "data_fingerprint"
     t.string "type", limit: 30
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
-  create_table "contact_forms", force: :cascade do |t|
+  create_table "countries", force: :cascade do |t|
     t.string "uid"
-    t.string "full_name"
-    t.string "phone"
-    t.string "email"
-    t.string "object"
-    t.text "message"
-    t.boolean "read"
-    t.datetime "read_at"
+    t.string "name"
     t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_countries_on_user_id"
+  end
+
+  create_table "diabete_monitorings", force: :cascade do |t|
+    t.string "uid"
+    t.bigint "patient_id"
+    t.string "glycemie_a_jeun"
+    t.boolean "sueurs"
+    t.boolean "sensation_de_faim"
+    t.boolean "tremblement"
+    t.boolean "vertige"
+    t.boolean "irritabilite"
+    t.boolean "polyurie_majoree"
+    t.boolean "fatigue_majoree"
+    t.boolean "amaigrissement"
+    t.text "comments"
+    t.string "status"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["patient_id"], name: "index_diabete_monitorings_on_patient_id"
+    t.index ["user_id"], name: "index_diabete_monitorings_on_user_id"
+  end
+
+  create_table "doctors", force: :cascade do |t|
+    t.string "uid"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "civility"
+    t.bigint "speciality_id"
+    t.string "address"
+    t.string "phone"
+    t.bigint "country_id"
+    t.string "locality"
+    t.string "email"
+    t.text "description"
+    t.float "consultation_price", default: 0.0
+    t.float "general_consultation_price", default: 0.0
+    t.float "specialized_consultation_price", default: 0.0
+    t.string "status"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_doctors_on_country_id"
+    t.index ["speciality_id"], name: "index_doctors_on_speciality_id"
+    t.index ["user_id"], name: "index_doctors_on_user_id"
   end
 
   create_table "features", force: :cascade do |t|
@@ -113,8 +173,71 @@ ActiveRecord::Schema.define(version: 2021_08_07_070816) do
     t.string "subject_class"
     t.text "description"
     t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "heart_failure_monitorings", force: :cascade do |t|
+    t.string "uid"
+    t.bigint "patient_id"
+    t.float "weight"
+    t.float "cardiac_frequency"
+    t.boolean "breathlessness"
+    t.boolean "feet_swelling"
+    t.string "status"
+    t.text "comments"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["patient_id"], name: "index_heart_failure_monitorings_on_patient_id"
+    t.index ["user_id"], name: "index_heart_failure_monitorings_on_user_id"
+  end
+
+  create_table "hta_monitorings", force: :cascade do |t|
+    t.string "uid"
+    t.bigint "patient_id"
+    t.string "tas"
+    t.string "tad"
+    t.string "status"
+    t.text "comments"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["patient_id"], name: "index_hta_monitorings_on_patient_id"
+    t.index ["user_id"], name: "index_hta_monitorings_on_user_id"
+  end
+
+  create_table "localities", force: :cascade do |t|
+    t.string "uid"
+    t.bigint "country_id"
+    t.string "region"
+    t.string "cercle"
+    t.string "commune"
+    t.string "city"
+    t.string "neighbourhood"
+    t.string "status"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_localities_on_country_id"
+    t.index ["user_id"], name: "index_localities_on_user_id"
+  end
+
+  create_table "medication_schedules", force: :cascade do |t|
+    t.string "uid"
+    t.bigint "doctor_id"
+    t.bigint "patient_id"
+    t.string "morning_number"
+    t.string "noo_number"
+    t.string "evening_number"
+    t.string "status"
+    t.text "comments"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["doctor_id"], name: "index_medication_schedules_on_doctor_id"
+    t.index ["patient_id"], name: "index_medication_schedules_on_patient_id"
+    t.index ["user_id"], name: "index_medication_schedules_on_user_id"
   end
 
   create_table "organization_types", force: :cascade do |t|
@@ -123,8 +246,8 @@ ActiveRecord::Schema.define(version: 2021_08_07_070816) do
     t.text "description"
     t.string "status"
     t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_organization_types_on_user_id"
   end
 
@@ -145,23 +268,33 @@ ActiveRecord::Schema.define(version: 2021_08_07_070816) do
     t.string "web_site"
     t.string "status"
     t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["activity_field_id"], name: "index_organizations_on_activity_field_id"
     t.index ["organization_type_id"], name: "index_organizations_on_organization_type_id"
     t.index ["user_id"], name: "index_organizations_on_user_id"
   end
 
-  create_table "pages", force: :cascade do |t|
+  create_table "patients", force: :cascade do |t|
     t.string "uid"
-    t.string "slug"
-    t.string "title"
-    t.text "content"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "civility"
+    t.string "age"
+    t.string "address"
+    t.string "phone"
+    t.bigint "country_id"
+    t.string "locality"
+    t.string "email"
+    t.string "pathology"
+    t.string "monitoring_frequency"
+    t.text "description"
     t.string "status"
     t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_pages_on_user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_patients_on_country_id"
+    t.index ["user_id"], name: "index_patients_on_user_id"
   end
 
   create_table "permission_items", force: :cascade do |t|
@@ -169,8 +302,8 @@ ActiveRecord::Schema.define(version: 2021_08_07_070816) do
     t.bigint "permission_id"
     t.string "action_name"
     t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["permission_id"], name: "index_permission_items_on_permission_id"
   end
 
@@ -179,10 +312,37 @@ ActiveRecord::Schema.define(version: 2021_08_07_070816) do
     t.bigint "feature_id"
     t.bigint "role_id"
     t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["feature_id"], name: "index_permissions_on_feature_id"
     t.index ["role_id"], name: "index_permissions_on_role_id"
+  end
+
+  create_table "prescription_items", force: :cascade do |t|
+    t.string "uid"
+    t.bigint "prescription_id", null: false
+    t.string "medicament"
+    t.string "posologie"
+    t.text "comments"
+    t.string "status"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["prescription_id"], name: "index_prescription_items_on_prescription_id"
+    t.index ["user_id"], name: "index_prescription_items_on_user_id"
+  end
+
+  create_table "prescriptions", force: :cascade do |t|
+    t.string "uid"
+    t.bigint "doctor_id"
+    t.bigint "patient_id"
+    t.string "status"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["doctor_id"], name: "index_prescriptions_on_doctor_id"
+    t.index ["patient_id"], name: "index_prescriptions_on_patient_id"
+    t.index ["user_id"], name: "index_prescriptions_on_user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -194,8 +354,8 @@ ActiveRecord::Schema.define(version: 2021_08_07_070816) do
     t.string "gender"
     t.text "describe"
     t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -204,23 +364,8 @@ ActiveRecord::Schema.define(version: 2021_08_07_070816) do
     t.string "name"
     t.text "description"
     t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "services", force: :cascade do |t|
-    t.string "uid"
-    t.bigint "organization_id"
-    t.string "name"
-    t.string "description"
-    t.string "status"
-    t.bigint "parent_id"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["organization_id"], name: "index_services_on_organization_id"
-    t.index ["parent_id"], name: "index_services_on_parent_id"
-    t.index ["user_id"], name: "index_services_on_user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "smtp_configs", force: :cascade do |t|
@@ -234,9 +379,60 @@ ActiveRecord::Schema.define(version: 2021_08_07_070816) do
     t.boolean "smtp_enable_starttls_auto"
     t.boolean "smtp_ssl"
     t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_smtp_configs_on_user_id"
+  end
+
+  create_table "specialities", force: :cascade do |t|
+    t.string "uid"
+    t.string "name"
+    t.text "description"
+    t.string "status"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_specialities_on_user_id"
+  end
+
+  create_table "structure_types", force: :cascade do |t|
+    t.string "uid"
+    t.string "name"
+    t.text "description"
+    t.string "status"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_structure_types_on_user_id"
+  end
+
+  create_table "structures", force: :cascade do |t|
+    t.string "uid"
+    t.bigint "structure_type_id"
+    t.string "name"
+    t.string "slogan"
+    t.string "address"
+    t.string "full_address"
+    t.string "street"
+    t.string "phone"
+    t.bigint "country_id"
+    t.string "locality"
+    t.string "email"
+    t.string "web"
+    t.float "latitude"
+    t.float "longitude"
+    t.text "description"
+    t.float "consultation_price", default: 0.0
+    t.float "general_consultation_price", default: 0.0
+    t.float "specialized_consultation_price", default: 0.0
+    t.bigint "views", default: 0
+    t.string "status"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_structures_on_country_id"
+    t.index ["structure_type_id"], name: "index_structures_on_structure_type_id"
+    t.index ["user_id"], name: "index_structures_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -261,8 +457,8 @@ ActiveRecord::Schema.define(version: 2021_08_07_070816) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -272,17 +468,34 @@ ActiveRecord::Schema.define(version: 2021_08_07_070816) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activity_fields", "users"
+  add_foreign_key "countries", "users"
+  add_foreign_key "diabete_monitorings", "users"
+  add_foreign_key "doctors", "countries"
+  add_foreign_key "doctors", "specialities"
+  add_foreign_key "doctors", "users"
+  add_foreign_key "heart_failure_monitorings", "users"
+  add_foreign_key "hta_monitorings", "users"
+  add_foreign_key "localities", "countries"
+  add_foreign_key "localities", "users"
+  add_foreign_key "medication_schedules", "users"
   add_foreign_key "organization_types", "users"
   add_foreign_key "organizations", "activity_fields"
   add_foreign_key "organizations", "organization_types"
   add_foreign_key "organizations", "users"
-  add_foreign_key "pages", "users"
+  add_foreign_key "patients", "countries"
+  add_foreign_key "patients", "users"
   add_foreign_key "permission_items", "permissions"
   add_foreign_key "permissions", "features"
   add_foreign_key "permissions", "roles"
+  add_foreign_key "prescription_items", "prescriptions"
+  add_foreign_key "prescription_items", "users"
+  add_foreign_key "prescriptions", "users"
   add_foreign_key "profiles", "users"
-  add_foreign_key "services", "organizations"
-  add_foreign_key "services", "users"
   add_foreign_key "smtp_configs", "users"
+  add_foreign_key "specialities", "users"
+  add_foreign_key "structure_types", "users"
+  add_foreign_key "structures", "countries"
+  add_foreign_key "structures", "structure_types"
+  add_foreign_key "structures", "users"
   add_foreign_key "users", "roles"
 end

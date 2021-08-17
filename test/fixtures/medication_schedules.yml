@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uid: MyString
+  doctor: one
+  patient: one
+  morning_number: MyString
+  noo_number: MyString
+  evening_number: MyString
+  status: MyString
+  comments: MyText
+  user: one
+
+two:
+  uid: MyString
+  doctor: two
+  patient: two
+  morning_number: MyString
+  noo_number: MyString
+  evening_number: MyString
+  status: MyString
+  comments: MyText
+  user: two

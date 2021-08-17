@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  patient: one
+  tas: MyString
+  tad: MyString
+  status: MyString
+  comments: MyText
+  user: one
+
+two:
+  patient: two
+  tas: MyString
+  tad: MyString
+  status: MyString
+  comments: MyText
+  user: two

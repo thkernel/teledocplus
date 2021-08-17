@@ -1,0 +1,10 @@
+$("ul.errors").html("");
+<% if @structure_type.errors.any? %>
+  <% @structure_type.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"));
+  <% end %>
+<% else %>
+  $(".structure-types").html("<%= escape_javascript(render 'index') %>");
+  $("#structure-type-modal").modal("hide");
+ 
+<% end %>

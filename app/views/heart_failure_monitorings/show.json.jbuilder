@@ -1,0 +1,1 @@
+json.partial! "heart_failure_monitorings/heart_failure_monitoring", heart_failure_monitoring: @heart_failure_monitoring

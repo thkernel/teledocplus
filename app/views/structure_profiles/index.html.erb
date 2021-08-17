@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Structure Profiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Structure</th>
+      <th>Profile</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @structure_profiles.each do |structure_profile| %>
+      <tr>
+        <td><%= structure_profile.structure %></td>
+        <td><%= structure_profile.profile %></td>
+        <td><%= structure_profile.status %></td>
+        <td><%= link_to 'Show', structure_profile %></td>
+        <td><%= link_to 'Edit', edit_structure_profile_path(structure_profile) %></td>
+        <td><%= link_to 'Destroy', structure_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Structure Profile', new_structure_profile_path %>

@@ -1,0 +1,24 @@
+<% if @doctors.present? %>
+
+<% @doctors.each do |doctor| %>
+      <tr>
+        <!--<td><%= user_avatar(user(doctor.user_id), "Avatar", "wd-80 rounded-circle") %></td>-->
+        <td><%= doctor.first_name %></td>
+        <td><%= doctor.last_name %></td>
+        <td><%= doctor.speciality %></td>
+        <td><%= locality(doctor.locality_id).city %></td>
+
+        <td><%= doctor.phone %></td>
+
+
+
+       <td>
+			<div class="action-buttons">
+			
+
+
+</div>
+</td>
+      </tr>
+    <% end %>
+    <% end %>

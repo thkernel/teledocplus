@@ -1,0 +1,2 @@
+module HeartFailureMonitoringsHelper
+end

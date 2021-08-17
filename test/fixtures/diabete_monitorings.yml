@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uid: MyString
+  patient: one
+  glycemie_a_jeun: MyString
+  sueurs: false
+  sensation_de_faim: false
+  tremblement: false
+  vertige: false
+  irritabilite: false
+  polyurie_majoree: false
+  fatigue_majoree: false
+  amaigrissement: false
+  comments: MyText
+  status: MyString
+  user: one
+
+two:
+  uid: MyString
+  patient: two
+  glycemie_a_jeun: MyString
+  sueurs: false
+  sensation_de_faim: false
+  tremblement: false
+  vertige: false
+  irritabilite: false
+  polyurie_majoree: false
+  fatigue_majoree: false
+  amaigrissement: false
+  comments: MyText
+  status: MyString
+  user: two

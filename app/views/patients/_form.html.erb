@@ -1,0 +1,94 @@
+<%= form_with(model: user, url: create_patient_path, local: false) do |f| %>
+	<div class="modal-body">
+		<ul class="errors"></ul>
+		<!-- Profile infos -->
+      <%= f.fields_for :profile do |p| %>
+        
+
+        <div class="row">
+          <div class="col-md-12">
+              <%= p.hidden_field :profile_type, value: "Patient",  class: "form-control" , required: true %>
+          </div>
+          
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= p.label :first_name, "Prénom", class: "required" %>
+              <%= p.text_field :first_name, class: "form-control" , placeholder: "Prénom", required: true %>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= p.label :last_name, "Nom", class: "required" %>
+              <%= p.text_field :last_name, class: "form-control" , placeholder: "Nom", required: true %>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+          <!--
+            <div class="form-group user-speciality">
+                <%= p.label :speciality, "Spécialité" %>
+                <%= p.collection_select :speciality, @specialities, :name, :name, {prompt: "Sélectionner"}, class: "form-control" , style: "width: 100%" %> 
+
+            </div>
+            -->
+
+            <div class="form-group">
+              <%= p.label :phone, "Téléphone", class: "required" %>
+              <%= p.text_field :phone, class: "form-control" , placeholder: "Téléphone", required: true %>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+                <%= p.label :country, "Pays", class: "required" %>
+                <%= p.collection_select :country_id, @countries, :id, :name, {prompt: "Sélectionner"}, class: "form-control" , style: "width: 100%", required: true %> 
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+                <%= p.label :locality, "Localité", class: "required" %>
+                <%= p.collection_select :locality_id, @localities, :id, :city, {prompt: "Sélectionner"}, class: "form-control" , style: "width: 100%", required: true %> 
+            </div>
+          </div>
+        </div>
+
+  <% end %>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= f.label :email, class: "required" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control",  placeholder: "E-mail" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :password, class: "required" %>
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control",  placeholder: "Mot de passe" %>
+        </div>
+      </div>
+  
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :password_confirmation, "Confirmation", class: "required" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control",  placeholder: "Confirmation" %>
+        </div>
+      </div>
+      
+	</div><!-- modal body -->
+  <div class="modal-footer">
+    <%= link_to "Annuler", "#", class: "btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", data: {dismiss: "modal"} %>
+    <%= f.submit  class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+  </div>
+<% end %>

@@ -1,0 +1,87 @@
+<%= form_with(model: diabete_monitoring) do |form| %>
+  <% if diabete_monitoring.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(diabete_monitoring.errors.count, "error") %> prohibited this diabete_monitoring from being saved:</h2>
+
+      <ul>
+        <% diabete_monitoring.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :uid %>
+    <%= form.text_field :uid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :patient_id %>
+    <%= form.text_field :patient_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :glycemie_a_jeun %>
+    <%= form.text_field :glycemie_a_jeun %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sueurs %>
+    <%= form.check_box :sueurs %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sensation_de_faim %>
+    <%= form.check_box :sensation_de_faim %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tremblement %>
+    <%= form.check_box :tremblement %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vertige %>
+    <%= form.check_box :vertige %>
+  </div>
+
+  <div class="field">
+    <%= form.label :irritabilite %>
+    <%= form.check_box :irritabilite %>
+  </div>
+
+  <div class="field">
+    <%= form.label :polyurie_majoree %>
+    <%= form.check_box :polyurie_majoree %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fatigue_majoree %>
+    <%= form.check_box :fatigue_majoree %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amaigrissement %>
+    <%= form.check_box :amaigrissement %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comments %>
+    <%= form.text_area :comments %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,51 @@
+
+
+<div class="container main-container">
+
+
+
+<div class="br-pagebody">
+  <div class="br-section-wrapper">
+    <div class="headers mg-b-5">
+          <h2>Liste des : <%= @structure_type.name %></h2>
+
+
+    </div>
+    <div class="section-body">
+      <div class="row">
+            <% @structures.each do |structure| %>
+                    <div class="col-md-3">
+                        <div class="card">
+                          <div class="structure-logo">
+                            <%= link_to structure_path(structure.id) do %>
+                              <%= structure_logo(structure, "card-img-top", "") %>
+                            
+                            <% end %>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%=link_to structure.name, structure_path(structure.id) %>
+                            </h5>
+                            <p class="card-text">
+                              <%= "#{structure.address}, #{locality(structure.locality_id).city}"%>
+                            </p>
+
+                            <p class="card-text">
+                              <%= "Vues: #{structure.views}" %>
+                            </p>
+                            <%= link_to "Fiche", structure_path(structure.id), class: "btn btn-primary btn-block" %>
+                        </div>
+                        </div>
+                    </div>
+
+            <% end %>
+        </div>
+      </div>
+    </div>
+
+
+
+
+</div>
+</div>
+</div>

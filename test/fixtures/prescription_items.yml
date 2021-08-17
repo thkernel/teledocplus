@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uid: MyString
+  prescription: one
+  medicament: MyString
+  posologie: MyString
+  comment: MyText
+  status: MyString
+  user: one
+
+two:
+  uid: MyString
+  prescription: two
+  medicament: MyString
+  posologie: MyString
+  comment: MyText
+  status: MyString
+  user: two

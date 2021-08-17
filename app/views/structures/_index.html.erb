@@ -1,0 +1,25 @@
+<% if @structures.present? %>
+
+<% @structures.each do |structure| %>
+    <tr>
+    <td><%= structure_type(structure.structure_type_id).name %></td>
+    <td><%= structure.name %></td>
+    
+    <td><%= structure.phone %></td>
+    <td><%= locality(structure.locality_id).city %></td>
+   
+    <td>
+			<div class="action-buttons">
+				<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_structure_path(structure), title: "Modifier", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), structure_delete_path(structure), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+    </tr>
+<% end %>
+<% end %>

@@ -1,0 +1,62 @@
+<%= form_with(model: heart_failure_monitoring) do |form| %>
+  <% if heart_failure_monitoring.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(heart_failure_monitoring.errors.count, "error") %> prohibited this heart_failure_monitoring from being saved:</h2>
+
+      <ul>
+        <% heart_failure_monitoring.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :uid %>
+    <%= form.text_field :uid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :patient_id %>
+    <%= form.text_field :patient_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weight %>
+    <%= form.text_field :weight %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cardiac_frequency %>
+    <%= form.text_field :cardiac_frequency %>
+  </div>
+
+  <div class="field">
+    <%= form.label :breathlessness %>
+    <%= form.check_box :breathlessness %>
+  </div>
+
+  <div class="field">
+    <%= form.label :feet_swelling %>
+    <%= form.check_box :feet_swelling %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comments %>
+    <%= form.text_area :comments %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

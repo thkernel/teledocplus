@@ -1,0 +1,24 @@
+<% @appointments.each do |appointment| %>
+    <tr>
+    <td><%= appointment.patient_id %></td>
+    <td><%= doctor(appointment.doctor_id) %></td>
+    <td><%= appointment.reason %></td>
+    <td><%= appointment.day %></td>
+    <td><%= appointment.start_time %></td>
+    <td><%= appointment.end_time %></td>
+    <td><%= appointment.status %></td>
+
+        <td>
+			<div class="action-buttons">
+				<%= link_to raw('<i class="fa fa-check" aria-hidden="true"></i>
+'), edit_appointment_path(appointment), title: "Valider", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), appointment_delete_path(appointment), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+    </tr>
+<% end %>
