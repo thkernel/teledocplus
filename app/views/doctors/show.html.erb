@@ -1,0 +1,109 @@
+<% provide :head_tags do %>
+  <meta name='turbolinks-visit-control' content='reload'>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function(){
+        initMap(<%=@structure.latitude%>, <%=@structure.longitude%>)
+    });
+    </script>
+<% end %>
+
+<div class="container main-container">
+  <div class="card">
+    <div class="card-header">
+        <div class="pull-left">
+            <strong>Informations</strong>
+        </div>
+        <div class="pull-right">
+            
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2">
+              <%= structure_logo(@structure, "logo", "show-structure-logo") %>
+
+            </div>
+            <div class="col-md-4">
+                <table>
+                    <tbody>
+                        
+                         <tr>
+                            <td class="table-td-title">Nom:</td><td class="table-td-value"><%= @structure.name %></td>
+                        </tr>
+                       
+                         <tr>
+                            <td class="table-td-title">Type:</td class="table-td-value"><td><%=  structure_type(@structure.structure_type_id).name %></td>
+                        </tr>
+
+                        <tr>
+                            <td class="table-td-title">Adresse:</td class="table-td-value"><td><%=  "#{@structure.address}, #{locality(@structure.locality_id).city}" %></td>
+                        </tr>
+
+                        <tr>
+                            <td class="table-td-title">Téléphone:</td class="table-td-value"><td><%=  @structure.phone %></td>
+                        </tr>
+                        <tr>
+                            <td class="table-td-title">Email:</td class="table-td-value"><td><%=  @structure.email %></td>
+                        </tr>
+                       
+                       
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-6">
+                <p>
+                    <div id="map"></div>
+                </p>
+            </div>
+            
+        </div>
+    </div>
+  </div>
+
+  <div class="card m-t-30">
+    <div class="card-header">
+      <h6>Médecins</h6>
+    </div>
+    <div class="card-body">
+      <% if @doctors.present? %>
+        <div class="row">
+          <% @doctors.each do |doctor| %>
+             <div class="col-md-3">
+                            <div class="user-card" >
+                                <div class="user-card-body">
+                                    <%= link_to  show_doctor_profile_path(doctor.user_id) do  %>
+                                        <div class="user-thumb">
+                                            <%= user_avatar(user(doctor.user_id), "Avatar", "")%>
+                                        </div>
+                                    <% end %>
+                                    
+                                    <div class="user-name title-bold title-black">
+                                        <%= link_to "#{doctor.first_name.humanize} #{doctor.last_name.upcase}", show_doctor_profile_path(doctor.user_id) %>
+                                    </div>
+                                    <div class="user-location title-normal title-black-light">
+                                        <%= doctor.speciality %>
+                                    </div>
+                                    <div class="user-location title-normal title-black-light">
+                                        <%= "#{locality(doctor.locality_id).city if doctor.locality_id.present? }" %> <br />
+                                        <%= "Vues: #{doctor.views}" %>
+                                    </div>
+                                    <div class="send-flirt">
+                                        <%= link_to "PRENDRE RENDEZ-VOUS", show_doctor_profile_path(doctor.user_id) , class: "btn btn-primary"  %>
+                                    </div>
+                                </div> 
+                                <div class="user-card-footer">
+                                </div>
+                            </div>
+                        </div>
+          <% end %>
+        </div>
+      <% else %>
+        <h5 class="text-center">Pas de médecins</h2>
+      <% end %>
+    </div>
+  </div>
+</div>
+

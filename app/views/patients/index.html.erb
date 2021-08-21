@@ -1,17 +1,17 @@
-<div class="br-pageheader">
+<div class="br-pageheader mg-30">
       <nav class="breadcrumb pd-0 mg-0 tx-12">
         
-        <span class="breadcrumb-item active"><h5>Utilisateurs</h2></span>
+        <span class="breadcrumb-item active"><h5>Patients</h2></span>
       </nav>
     </div><!-- br-pageheader -->
-<div class="br-pagebody">
+<div class="br-pagebody mg-b-30">
   <div class="br-section-wrapper">
     <div class="headers mg-b-20">
         <div class="left-content">
         </div>
 
         <div class="text-right">
-            <%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Ajouter'), new_user_path, class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", remote: true %>
+            <%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Ajouter'), new_patient_path, class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", remote: true %>
 
         </div>
 
@@ -22,17 +22,21 @@
 		  <thead>
 			<tr>
 				<!-- <th>Login</th> -->
-				<th>E-mail</th>
-				<th>Profil</th>
+				<th>Nom</th>
+				<th>Prénom</th>
+				<th>Sexe</th>
+				<th>Pays</th>
+				<th>Localité</th>
+            	<th>Téléphone</th>
 				<th>Actions</th>
 			  
 			</tr>
 		  </thead>
 
-		  <tbody class="users">
-				<%= render('index') %>
+		  <tbody class="patients">
+				<%= render "index" %>
 		  </tbody>
 		</table>
 	</div>
 </div>
-<div id="user-modal" class="c-modal modal fade" data-backdrop="static"></div>
+<div id="patient-modal" class="c-modal modal fade" data-backdrop="static"></div>

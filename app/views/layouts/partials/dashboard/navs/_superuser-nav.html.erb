@@ -6,58 +6,50 @@
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-          <%= link_to  raw('<i class="fa fa-book tx-20"></i> <span class="menu-item-label">Portfolios</span>'), portfolios_path, class: "br-menu-link" %>
+          <%= link_to  raw('<i class="fa fa-book tx-20"></i> <span class="menu-item-label">Rendez-vous</span>'), appointments_path, class: "br-menu-link" %>
         </li><!-- br-menu-item -->
 
         
         <li class="br-menu-item">
-          <%= link_to  raw('<i class="fa fa-user-plus tx-20"></i> <span class="menu-item-label">Invitations</span>'), invitations_path, class: "br-menu-link" %>
+          <%= link_to  raw('<i class="fa fa-user-plus tx-20"></i> <span class="menu-item-label">Ordonnances</span>'), prescriptions_path, class: "br-menu-link #{current? "active", prescriptions_path}" %>
+        </li><!-- br-menu-item -->
+
+        <li class="br-menu-item">
+          <%= link_to  raw('<i class="fa fa-user-plus tx-20"></i> <span class="menu-item-label">Patients</span>'), patients_path, class: "br-menu-link" %>
+        </li><!-- br-menu-item -->
+
+        <li class="br-menu-item">
+          <%= link_to  raw('<i class="fa fa-user-plus tx-20"></i> <span class="menu-item-label">Médecins</span>'), doctors_path, class: "br-menu-link" %>
+        </li><!-- br-menu-item -->
+
+        <li class="br-menu-item">
+          <%= link_to  raw('<i class="fa fa-user-plus tx-20"></i> <span class="menu-item-label">Structures</span>'), structures_path, class: "br-menu-link" %>
+        </li><!-- br-menu-item -->
+
+        <li class="br-menu-item">
+          <%= link_to  raw('<i class="fa fa-user-plus tx-20"></i> <span class="menu-item-label">Prise de médicaments</span>'), medication_schedules_path, class: "br-menu-link #{current? "active", medication_schedules_path}" %>
         </li><!-- br-menu-item -->
 
 
-       <li class="br-menu-item">
-          <a href="#" class="br-menu-link with-sub">
-            <i class="fa fa-list-alt tx-20"></i>
-            <span class="menu-item-label">Abonnements</span>
-          </a><!-- br-menu-link -->
-          <ul class="br-menu-sub">
-            
-            <li class="sub-item">
-                <%= link_to  "Liste des abonnements", subscriptions_path, class: "sub-link #{current? "active", subscriptions_path}" %>
-            </li>
-
-            <li class="sub-item">
-                <%= link_to  "Plans d'abonnement", subscription_packs_path, class: "sub-link #{current? "active", subscription_packs_path}" %>
-            </li>
-
-            <li class="sub-item">
-                <%= link_to  "Fonctionalités", subscription_pack_features_path, class: "sub-link #{current? "active", subscription_pack_features_path}" %>
-            </li>
-
-            <li class="sub-item">
-                <%= link_to  "Types d'abonnement", subscription_types_path, class: "sub-link #{current? "active", subscription_types_path}" %>
-            </li>
-
-      
-
-
-          </ul>
-        </li>
-
+       
 
         <li class="br-menu-item">
           <a href="#" class="br-menu-link with-sub">
             <i class="fa fa-building-o tx-20"></i>
-            <span class="menu-item-label">Organisations</span>
+            <span class="menu-item-label">Suivis</span>
           </a><!-- br-menu-link -->
           <ul class="br-menu-sub">
             
             <li class="sub-item">
-                <%= link_to  "Liste des organisations", organizations_path, class: "sub-link #{current? "active", organizations_path}" %>
+                <%= link_to  "HTA", hta_monitorings_path, class: "sub-link #{current? "active", hta_monitorings_path}" %>
             </li>
 
             <li class="sub-item">
-                <%= link_to  "Types d'organisation", organization_types_path, class: "sub-link #{current? "active", organization_types_path}" %>
+                <%= link_to  "Diabètes", diabete_monitorings_path, class: "sub-link #{current? "active", diabete_monitorings_path}" %>
+            </li>
+
+            <li class="sub-item">
+                <%= link_to  "Insuffisances cardiaque", heart_failure_monitorings_path, class: "sub-link #{current? "active", heart_failure_monitorings_path}" %>
             </li>
 
             
@@ -79,10 +71,7 @@
         </li>
 
 
-        <li class="br-menu-item">
-          <%= link_to  raw('<i class="fa fa-file tx-20" aria-hidden="true"></i> <span class="menu-item-label">Pages</span>'), pages_path, class: "br-menu-link #{current? "active", pages_path}" %>
-
-        </li><!-- br-menu-item -->
+       
 
 
         <li class="br-menu-item">
@@ -111,8 +100,18 @@
             </li>
 
             <li class="sub-item">
-                <%= link_to  "Domaines d'activité", activity_fields_path, class: "sub-link #{current? "active", activity_fields_path}" %>
+                <%= link_to  "Types de structure", structure_types_path, class: "sub-link #{current? "active", structure_types_path}" %>
             </li>
+
+            <li class="sub-item">
+                <%= link_to  "Spécialités", specialities_path, class: "sub-link #{current? "active", specialities_path}" %>
+            </li>
+
+            <li class="sub-item">
+                <%= link_to  "Pays", countries_path, class: "sub-link #{current? "active", countries_path}" %>
+            </li>
+
+           
 
             <li class="sub-item">
                 <%= link_to  "Serveur SMTP", smtp_configs_path, class: "sub-link #{current? "active", smtp_configs_path}" %>

@@ -1,43 +1,46 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+<div class="br-pageheader mg-30">
+      <nav class="breadcrumb pd-0 mg-0 tx-12">
+        
+        <span class="breadcrumb-item active"><h5>Prises de médicament</h5></span>
+      </nav>
+    </div><!-- br-pageheader -->
+<div class="br-pagebody mg-b-30">
+  <div class="br-section-wrapper">
+    <div class="headers mg-b-20">
+        <div class="left-content">
+        </div>
 
-<h1>Medication Schedules</h1>
+        <div class="text-right">
+        
+            <%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Ajouter'), new_medication_schedule_path, class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", remote: true %>
+        
+        </div>
 
-<table>
+    </div>
+
+
+<table id="datatable1" class="table display responsive nowrap">
+
+
   <thead>
     <tr>
-      <th>Uid</th>
-      <th>Doctor</th>
+      
+      <th>Médecin</th>
       <th>Patient</th>
-      <th>Morning number</th>
-      <th>Noo number</th>
-      <th>Evening number</th>
-      <th>Status</th>
-      <th>Comments</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>Nbre matin</th>
+      <th>Nbre midi</th>
+      <th>Nbre soir</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @medication_schedules.each do |medication_schedule| %>
-      <tr>
-        <td><%= medication_schedule.uid %></td>
-        <td><%= medication_schedule.doctor_id %></td>
-        <td><%= medication_schedule.patient_id %></td>
-        <td><%= medication_schedule.morning_number %></td>
-        <td><%= medication_schedule.noo_number %></td>
-        <td><%= medication_schedule.evening_number %></td>
-        <td><%= medication_schedule.status %></td>
-        <td><%= medication_schedule.comments %></td>
-        <td><%= medication_schedule.user_id %></td>
-        <td><%= link_to 'Show', medication_schedule %></td>
-        <td><%= link_to 'Edit', edit_medication_schedule_path(medication_schedule) %></td>
-        <td><%= link_to 'Destroy', medication_schedule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody class="medication-schedules">
+    <%= render "index" %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Medication Schedule', new_medication_schedule_path %>
+</div>
+</div>
+</div>
+<div id="medication-schedule-modal" class="c-modal modal fade" data-backdrop="static"></div>

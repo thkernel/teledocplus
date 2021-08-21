@@ -207,22 +207,6 @@ ActiveRecord::Schema.define(version: 2021_11_22_114030) do
     t.index ["user_id"], name: "index_hta_monitorings_on_user_id"
   end
 
-  create_table "localities", force: :cascade do |t|
-    t.string "uid"
-    t.bigint "country_id"
-    t.string "region"
-    t.string "cercle"
-    t.string "commune"
-    t.string "city"
-    t.string "neighbourhood"
-    t.string "status"
-    t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["country_id"], name: "index_localities_on_country_id"
-    t.index ["user_id"], name: "index_localities_on_user_id"
-  end
-
   create_table "medication_schedules", force: :cascade do |t|
     t.string "uid"
     t.bigint "doctor_id"
@@ -475,8 +459,6 @@ ActiveRecord::Schema.define(version: 2021_11_22_114030) do
   add_foreign_key "doctors", "users"
   add_foreign_key "heart_failure_monitorings", "users"
   add_foreign_key "hta_monitorings", "users"
-  add_foreign_key "localities", "countries"
-  add_foreign_key "localities", "users"
   add_foreign_key "medication_schedules", "users"
   add_foreign_key "organization_types", "users"
   add_foreign_key "organizations", "activity_fields"

@@ -1,0 +1,25 @@
+<tr class="nested-fields">
+
+    
+    <td>
+    <%= f.select :day, JOURS, {prompt: "Sélectionner un jour"},  style: "width: 100%", class: "form-control", required: true %>
+
+    </td>
+    <td>
+        <%= f.time_field :start_time, class: "form-control", required: true %>
+    </td>
+
+    <td>
+        <%= f.time_field :end_time, class: "form-control", required: true %>
+    </td>
+     
+    <td>
+      
+    <%= link_to_remove_association raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), f, class: 'delete' %>
+  
+    </td>
+
+
+
+</tr>

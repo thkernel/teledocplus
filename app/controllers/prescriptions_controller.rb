@@ -1,5 +1,7 @@
 class PrescriptionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_prescription, only: %i[ show edit update destroy ]
+  layout "dashboard"
 
   # GET /prescriptions or /prescriptions.json
   def index
@@ -12,22 +14,26 @@ class PrescriptionsController < ApplicationController
 
   # GET /prescriptions/new
   def new
+    @patients = Patient.all
     @prescription = Prescription.new
   end
 
   # GET /prescriptions/1/edit
   def edit
+    @patients = Patient.all
   end
 
   # POST /prescriptions or /prescriptions.json
   def create
-    @prescription = Prescription.new(prescription_params)
-
+    @prescription = current_user.prescriptions.build(prescription_params)
+    @prescription.doctor_id = current_user.id
     respond_to do |format|
       if @prescription.save
         format.html { redirect_to @prescription, notice: "Prescription was successfully created." }
         format.json { render :show, status: :created, location: @prescription }
       else
+        @patients = Patient.all
+
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @prescription.errors, status: :unprocessable_entity }
       end
@@ -64,6 +70,6 @@ class PrescriptionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def prescription_params
-      params.require(:prescription).permit(:uid, :doctor_id, :patient_id, :status, :user_id)
+      params.require(:prescription).permit( :patient_id, prescription_items_attributes: [:id, :medicament,  :posologie,  :_destroy])
     end
 end

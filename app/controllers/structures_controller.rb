@@ -7,16 +7,9 @@ class StructuresController < ApplicationController
   # GET /structures
   # GET /structures.json
   def index
-    @structures = []
-    structures = current_user.profile.structures
-    puts "MES STRUCTURES: #{structures.inspect}"
-    if is_superuser?(current_user) || is_administrator?(current_user)
+    
       @structures = Structure.all
-    elsif is_structure_admin?
-      @structures.push(current_structure)
-    elsif structures.present?
-      @structures = structures
-    end
+    
 
   end
 
@@ -39,7 +32,7 @@ class StructuresController < ApplicationController
 
   # GET /structures/new
   def new
-    @localities = Locality.all
+   
     @countries = Country.all
 
     @structure_types = StructureType.all
@@ -49,7 +42,7 @@ class StructuresController < ApplicationController
 
   # GET /structures/1/edit
   def edit
-    @localities = Locality.all
+   
     @countries = Country.all
     @structure_types = StructureType.all
 
@@ -119,6 +112,6 @@ class StructuresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def structure_params
-      params.require(:structure).permit(:structure_type_id, :name, :slogan, :address, :full_address, :street, :phone, :country_id, :locality_id, :email, :web, :latitude, :longitude, :description, :status, :logo)
+      params.require(:structure).permit(:structure_type_id, :name, :slogan, :address, :full_address, :street, :phone, :country_id, :locality, :email, :web, :latitude, :longitude, :description, :status, :logo)
     end
 end

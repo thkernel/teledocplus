@@ -1,62 +1,52 @@
-<%= form_with(model: medication_schedule) do |form| %>
-  <% if medication_schedule.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(medication_schedule.errors.count, "error") %> prohibited this medication_schedule from being saved:</h2>
+<%= form_with(model: medication_schedule, local: false) do |form| %>
+   <div class="modal-body">
+    <ul class="errors">
+    </ul>
 
-      <ul>
-        <% medication_schedule.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="form-group ">
+          <%= form.label :patient_id, class: "required" %>
+             <%= form.collection_select :patient_id,  @patients, :id, :phone, {prompt: "Sélectionner"}, style: "width: 100%",  class: "form-control", required: true %>
+
+        </div>
+
+       
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= form.label :morning_number, "Nbre matin", class: "required" %>
+              <%= form.number_field :morning_number, class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= form.label :noo_number, "Nbre midi" %>
+              <%= form.number_field :noo_number, class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= form.label :evening_number, "Nbre soir" %>
+              <%= form.number_field :evening_number, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <%= form.label :comments, "Commentaires" %>
+          <%= form.text_area :comments, class: "form-control" %>
+        </div>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :uid %>
-    <%= form.text_field :uid %>
-  </div>
+  
 
-  <div class="field">
-    <%= form.label :doctor_id %>
-    <%= form.text_field :doctor_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :patient_id %>
-    <%= form.text_field :patient_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :morning_number %>
-    <%= form.text_field :morning_number %>
-  </div>
-
-  <div class="field">
-    <%= form.label :noo_number %>
-    <%= form.text_field :noo_number %>
-  </div>
-
-  <div class="field">
-    <%= form.label :evening_number %>
-    <%= form.text_field :evening_number %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :comments %>
-    <%= form.text_area :comments %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  </div><!-- modal body -->
+  <div class="modal-footer">
+    <%= link_to "Annuler", "#", class: "btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", data: {dismiss: "modal"} %>
+    <%= form.submit  class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
   </div>
 <% end %>

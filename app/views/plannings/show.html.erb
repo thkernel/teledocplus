@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Structure:</strong>
+  <%= @planning.structure %>
+</p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @planning.day %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @planning.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @planning.end_time %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @planning.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @planning.user %>
+</p>
+
+<%= link_to 'Edit', edit_planning_path(@planning) %> |
+<%= link_to 'Back', plannings_path %>

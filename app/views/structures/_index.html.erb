@@ -2,11 +2,11 @@
 
 <% @structures.each do |structure| %>
     <tr>
-    <td><%= structure_type(structure.structure_type_id).name %></td>
+    <td><%= structure.structure_type.name %></td>
     <td><%= structure.name %></td>
     
     <td><%= structure.phone %></td>
-    <td><%= locality(structure.locality_id).city %></td>
+    <td><%= structure.locality %></td>
    
     <td>
 			<div class="action-buttons">

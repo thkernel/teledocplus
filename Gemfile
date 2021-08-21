@@ -105,7 +105,7 @@ gem 'recaptcha', '~> 5.5'
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.6',  :groups => [:development, :test, :production]
 #gem 'acts-as-taggable-on', '~> 6.5'
 gem 'select2-rails', '~> 4.0', '>= 4.0.13'
-gem 'countries', require: 'countries/global'
+#gem 'countries', require: 'countries/global'
 gem 'acts_as_tree', '~> 2.9', '>= 2.9.1'
 #gem 'faraday', '~> 1.0', '>= 1.0.1'
 gem 'meta-tags', '~> 2.13' # For SEO

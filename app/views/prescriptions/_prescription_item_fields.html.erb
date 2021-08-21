@@ -1,0 +1,22 @@
+<tr class="nested-fields">
+
+    
+    
+    <td>
+        <%= f.text_field :medicament, class: "form-control", required: true %>
+    </td>
+
+    <td>
+        <%= f.text_area :posologie, class: "form-control", required: true %>
+    </td>
+     
+    <td>
+      
+    <%= link_to_remove_association raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), f, class: 'delete' %>
+  
+    </td>
+
+
+
+</tr>

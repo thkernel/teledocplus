@@ -1,0 +1,53 @@
+<%= form_with(model: planning, local: true) do |form| %>
+  <div class="modal-body">
+		<ul class="errors">
+    	</ul>
+
+  <div class="form-group">
+    <%= form.label :structure_id %>
+    <%= form.collection_select :structure_id,  @structures, :id, :name, {prompt: "Sélectionner"}, style: "width: 100%",  class: "form-control", required: true %>
+  </div>
+
+    <!-- Fieldset informations -->
+      <fieldset>
+        <div class="row">
+          <div class="prescription-items">
+
+            <table class="table  responsive ">
+              <thead>
+                <tr role="row">
+                
+                  <th>Jour</th>
+                   <th>Heure début</th>
+                   <th>Heure fin</th>
+
+                </tr>
+              </thead>
+                <tbody class="items">
+                  <%= form.fields_for :planning_items do |item| %>
+                      <%= render 'planning_item_fields', f: item %>
+                  <% end %>
+                </tbody>
+            </table>
+          
+          </div> 
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= link_to_add_association raw('<i class="fa fa-plus" aria-hidden="true"></i> Ajouter'), form, :planning_items, class: 'btn btn-primary', data: { association_insertion_node: '.items', association_insertion_method: :append } %>
+            </div>
+          </div>
+      </div>
+    </div>
+  </fieldset>
+
+
+  
+
+  </div><!-- modal body -->
+  <div class="modal-footer">
+    <%= link_to "Annuler", "#", class: "btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", data: {dismiss: "modal"} %>
+    <%= form.submit  class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+  </div>
+<% end %>

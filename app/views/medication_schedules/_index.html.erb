@@ -1,0 +1,24 @@
+<% @medication_schedules.each do |medication_schedule| %>
+      <tr>
+        <td><%= medication_schedule.uid %></td>
+        <td><%= medication_schedule.doctor_id %></td>
+        <td><%= medication_schedule.patient_id %></td>
+        <td><%= medication_schedule.morning_number %></td>
+        <td><%= medication_schedule.noo_number %></td>
+        <td><%= medication_schedule.evening_number %></td>
+        <td>
+            <div class="action-buttons">
+              
+
+                <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_medication_schedule_path(medication_schedule), title: "Modifier", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), medication_schedule_delete_path(medication_schedule), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+      </tr>
+    <% end %>

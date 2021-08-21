@@ -1,51 +1,58 @@
 Rails.application.routes.draw do
 
 
-  resources :heart_failure_monitorings
-  resources :hta_monitorings
-  resources :diabete_monitorings
-  resources :medication_schedules
+  resources :appointments do    
+    get "delete"
+  end
+
+  resources :specialities do    
+    get "delete"
+  end
+
+  resources :countries do    
+    get "delete"
+  end
+
+   resources :structure_types do    
+    get "delete"
+  end
+
+  resources :heart_failure_monitorings, path: "heart-failure-monitorings" do    
+    get "delete"
+  end
+
+  resources :hta_monitorings , path: "hta-monitorings" do    
+    get "delete"
+  end
+  resources :diabete_monitorings, path: "diabete-monitorings" do    
+    get "delete"
+  end
+
+  resources :medication_schedules , path: "medication-schedules" do    
+    get "delete"
+  end 
+
   resources :prescription_items
-  resources :prescriptions
-  resources :contact_forms
-  get "pricing/" => "subscription_packs#pricing", as: :pricing
-  get "portfolio/cards/:portfolio_id" => "cards#index", as: :portfolio_cards
-  resources :cards do    
+  resources :prescriptions do    
     get "delete"
   end
 
-  get "invitations/search-users" => "invitations#search_users", as: :search_users
-
-  get "members/organization/:organization_id" => "members#index", as: :organization_members
-
-  resources :members do    
+  resources :patients do    
     get "delete"
   end
-  resources :invitations do    
-    get "delete"
 
-    collection do    
-      get "get_services" => "invitations#get_services"
-    end
-  end
-  resources :pages do    
-    get "delete"
-  end
+
   
-  resources :portfolios do    
+  
+  resources :doctors do    
     get "delete"
   end
 
-  get "services/organization/:organization_id" => "services#index", as: :organization_services
-  post "subscriptions/new" => "subscriptions#new_guest_subscription"
-  get "subscriptions/new" => "subscriptions#new_guest_subscription", as: :new_guest_subscription
-
-
-  #post "subscriptions/new"
-
-  resources :services do    
+  resources :structures do    
     get "delete"
   end
+
+  
 
   resources :organizations  do    
     get "delete"
@@ -143,6 +150,16 @@ Rails.application.routes.draw do
   patch "/user/update/:id" => "custom_users#update", as: :udapte_user
   delete "/user/destroy/:id" => "custom_users#destroy", as: :destroy_user
   get "/user/delete/:id" => "custom_users#delete", as: :delete_user
+
+
+  get "/patients"     => "patients#index", as: :all_patients 
+  #get "/users/unregistered"     => "custom_users#unregistered", as: :unregistered_commission_percentage 
+  post "/patients/new"     => "patients#create", as: :create_patient
+  #get "/patients/new"     => "patients#new", as: :new_patient
+  #get "/patient/edit/:id" => "patients#edit", as: :edit_patient
+  patch "/patient/update/:id" => "patients#update", as: :udapte_patient
+  delete "/patient/destroy/:id" => "patients#destroy", as: :destroy_patient
+  get "/patient/delete/:id" => "patoents#delete", as: :delete_patient
 
  
   

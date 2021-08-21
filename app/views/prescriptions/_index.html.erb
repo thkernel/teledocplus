@@ -1,0 +1,19 @@
+<% @prescriptions.each do |prescription| %>
+  <tr>
+    <td><%= prescription.created_at %></td>
+    <td><%= prescription.doctor_id %></td>
+    <td><%= prescription.patient_id %></td>
+    <td>
+        <div class="action-buttons">
+            <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'),  edit_prescription_path(prescription), title: "Modifier", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), prescription_delete_path(prescription), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+  </tr>
+<% end %>

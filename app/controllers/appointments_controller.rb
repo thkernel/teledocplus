@@ -1,40 +1,41 @@
 class AppointmentsController < ApplicationController
+ before_action :authenticate_user!
+   layout "dashboard"
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /appointments
   # GET /appointments.json
   def index
-    if current_user.profile.profile_type == "Prestataire"
-      @appointments = current_user.doctor_appointments
-    elsif currentuser.profile.profile_type == "Patient"
-      @appointments = current_user.patient_appointments
-
-    end
+    
+      @appointments = Appointment.all
+    
     render layout: "dashboard"
   end
 
   # GET /appointments/1
   # GET /appointments/1.json
   def show
-    render layout: "dashboard"
+    
 
   end
 
   # GET /appointments/new
   def new
+    @patients = Patient.all
 
-    planning_item = PlanningItem.find(params[:planning_item])
-    puts "PLANNING ITEM: #{planning_item}"
+    #planning_item = PlanningItem.find(params[:planning_item])
+    #puts "PLANNING ITEM: #{planning_item}"
 
-    profile_id = Planning.find(planning_item.planning_id).user_id
+    #profile_id = Planning.find(planning_item.planning_id).user_id
 
-    doctor = User.find(Profile.find_by(user_id: profile_id).user_id)
-    @appointment = Appointment.new(structure_id: params[:structure_id], doctor_id: doctor.id, day: planning_item.day, start_time: planning_item.start_time, end_time: planning_item.end_time)
-    render layout: "front"
+    #doctor = User.find(Profile.find_by(user_id: profile_id).user_id)
+    @appointment = Appointment.new#(structure_id: params[:structure_id], doctor_id: doctor.id, day: planning_item.day, start_time: planning_item.start_time, end_time: planning_item.end_time)
+    render layout: "dashboard"
   end
 
   # GET /appointments/1/edit
   def edit
+    @patients = Patient.all
     render layout: "dashboard"
 
   end
@@ -51,6 +52,7 @@ class AppointmentsController < ApplicationController
         format.json { render :show, status: :created, location: @appointment }
         format.js
       else
+        @patients = Patient.all
         format.html { render :new }
         format.json { render json: @appointment.errors, status: :unprocessable_entity }
         format.js

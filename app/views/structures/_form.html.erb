@@ -43,7 +43,7 @@
 
       <div class="form-group">
           <%= form.label :locality , "Localité"%>
-          <%= form.collection_select :locality_id, @localities, :id, :city, {prompt: "Sélectionner"}, style: "width: 100%", class: "form-control", required: true %>
+          <%= form.text_field :locality,class: "form-control", required: true %>
         </div>
        
 

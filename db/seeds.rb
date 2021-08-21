@@ -26,7 +26,7 @@ unless Role.all.present?
             {name: "Patient"},
             {name: "Médedcin"},
             {name: "Structure"},
-            {
+            
             
         ])
 else
@@ -86,9 +86,9 @@ unless Profile.all.present?
         {
             first_name: "Amos", 
             last_name: "DEMBELE",
-            phone: "00000000",
-            country_id: countries.first.id,
-            locality: "Bamako",
+            #phone: "00000000",
+            #country_id: countries.first.id,
+            #locality: "Bamako",
             user_id: users.first.id,
             
              
@@ -96,18 +96,18 @@ unless Profile.all.present?
         {
             first_name: "Kolane", 
             last_name: "Fréderick",
-            phone: "11111111",
-            country_id: countries.first.id,
-            locality: "Bamako",
+            #phone: "11111111",
+            #country_id: countries.first.id,
+            #locality: "Bamako",
             user_id: users.last.id,
             
         },
         {
             first_name: "Ko-Santé+", 
             last_name: "SARL",
-            phone: "22222222",
-            country_id: countries.first.id,
-            locality: "Bamako",
+            #phone: "22222222",
+            #country_id: countries.first.id,
+            #locality: "Bamako",
             user_id: User.find_by(login: "teledocplus").id,
             
         }
@@ -215,7 +215,7 @@ unless Structure.all.present?
             name: "Ko-Sante", 
             address: "Koulouba",
             phone: "00000000",
-            locality: "Bamako",
+            #locality: "Bamako",
             user_id: User.find_by(login: "kolane").id
              
         }

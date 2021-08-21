@@ -63,6 +63,7 @@ class StructureTypesController < ApplicationController
   end
 
   def delete
+    puts "STRUCTURE TYPE: #{@structure_type.inspect}"
     @structure_type = StructureType.find(params[:structure_type_id])
   end
 

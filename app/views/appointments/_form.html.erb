@@ -6,25 +6,39 @@
 
     <%= form.hidden_field :doctor_id, class: "form-control", required: true %>
     <%= form.hidden_field :structure_id, class: "form-control", required: true %>
+<div class="form-group ">
+      <%= form.label :patient_id, class: "required" %>
+         <%= form.collection_select :patient_id,  @patients, :id, :phone, {prompt: "Sélectionner"}, style: "width: 100%",  class: "form-control", required: true %>
+
+    </div>
 
 <div class="form-group">
     <%= form.label :reason, "Motif" %>
     <%= form.text_field :reason, class: "form-control", placeholder: "Motif de consultation", required: true %>
   </div>
 
-  <div class="form-group">
-    <%= form.label :day, "Jour" %>
-    <%= form.text_field :day, class: "form-control", readonly: true %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= form.label :day, "Jour" %>
+        <%= form.date_field :day, class: "form-control" %>
+      </div>
+    </div>
   </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :start_time, "Heure début" %>
+        <%= form.time_field :start_time, class: "form-control" %>
+      </div>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :start_time, "Heure" %>
-    <%= form.time_field :start_time, class: "form-control", readonly: true %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :end_time, "Heure" %>
-    <%= form.time_field :end_time, class: "form-control", readonly: true %>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :end_time, "Heure fin" %>
+        <%= form.time_field :end_time, class: "form-control" %>
+      </div>
+    </div>
   </div>
 
  

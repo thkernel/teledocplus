@@ -1,0 +1,10 @@
+$("ul.errors").html("");
+<% if @medication_schedule.errors.any? %>
+  <% @medication_schedule.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"));
+  <% end %>
+<% else %>
+  $(".medication-schedules").html("<%= escape_javascript(render 'index') %>");
+  $("#medication-schedule-modal").modal("hide");
+ 
+<% end %>
