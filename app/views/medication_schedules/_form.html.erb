@@ -8,7 +8,7 @@
 
         <div class="form-group ">
           <%= form.label :patient_id, class: "required" %>
-             <%= form.collection_select :patient_id,  @patients, :id, :phone, {prompt: "Sélectionner"}, style: "width: 100%",  class: "form-control", required: true %>
+             <%= form.collection_select :patient_id,  @patients, :id, :full_name, {prompt: "Sélectionner"}, style: "width: 100%",  class: "form-control", required: true %>
 
         </div>
 
@@ -22,8 +22,8 @@
           </div>
           <div class="col-md-4">
             <div class="form-group">
-              <%= form.label :noo_number, "Nbre midi" %>
-              <%= form.number_field :noo_number, class: "form-control" %>
+              <%= form.label :noon_number, "Nbre midi" %>
+              <%= form.number_field :noon_number, class: "form-control" %>
             </div>
           </div>
           <div class="col-md-4">

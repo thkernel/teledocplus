@@ -1,31 +1,45 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+<div class="br-pageheader">
+      <nav class="breadcrumb pd-0 mg-0 tx-12">
+        
+        <span class="breadcrumb-item active"><h5>Structures</h5></span>
+      </nav>
+    </div><!-- br-pageheader -->
+<div class="br-pagebody">
+  <div class="br-section-wrapper">
+    <div class="headers mg-b-20">
+        <div class="left-content">
+        </div>
 
-<h1>Structure Profiles</h1>
+        <div class="text-right">
+            <%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Ajouter'), new_structure_profile_path, class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", remote: true %>
 
-<table>
+        </div>
+
+    </div>
+
+
+<table id="datatable1" class="table display responsive nowrap">
+
+
   <thead>
     <tr>
-      <th>Structure</th>
-      <th>Profile</th>
-      <th>Status</th>
-      <th colspan="3"></th>
+      <th>Type</th>
+      <th>Nom</th>
+      <th>Téléphone</th>
+      <th>Localité</th>
+     
+      
+     
+      <th>Actions</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @structure_profiles.each do |structure_profile| %>
-      <tr>
-        <td><%= structure_profile.structure %></td>
-        <td><%= structure_profile.profile %></td>
-        <td><%= structure_profile.status %></td>
-        <td><%= link_to 'Show', structure_profile %></td>
-        <td><%= link_to 'Edit', edit_structure_profile_path(structure_profile) %></td>
-        <td><%= link_to 'Destroy', structure_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody class="structures">
+    <%= render "index" %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Structure Profile', new_structure_profile_path %>
+</div>
+</div>
+</div>
+<div id="structure-modal" class="c-modal modal fade" data-backdrop="static"></div>

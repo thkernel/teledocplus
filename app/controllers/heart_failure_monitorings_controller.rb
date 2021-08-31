@@ -1,4 +1,7 @@
 class HeartFailureMonitoringsController < ApplicationController
+  before_action :authenticate_user!
+  layout "dashboard"
+  
   before_action :set_heart_failure_monitoring, only: %i[ show edit update destroy ]
 
   # GET /heart_failure_monitorings or /heart_failure_monitorings.json

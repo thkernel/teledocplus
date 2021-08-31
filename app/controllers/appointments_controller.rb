@@ -21,7 +21,10 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/new
   def new
-    @patients = Patient.all
+
+    @patients = User.patients#.map{|patient| [patient.id, patient.userable.full_name]}.flatten
+
+    puts "NEW PATIENTS: #{@patients.inspect}"
 
     #planning_item = PlanningItem.find(params[:planning_item])
     #puts "PLANNING ITEM: #{planning_item}"
@@ -35,7 +38,7 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/1/edit
   def edit
-    @patients = Patient.all
+    @patients = User.patients
     render layout: "dashboard"
 
   end
@@ -43,16 +46,18 @@ class AppointmentsController < ApplicationController
   # POST /appointments
   # POST /appointments.json
   def create
-    @appointment = Appointment.new(appointment_params)
-    @appointment.patient_id = current_user.id
+    #@appointment = current_user.doctor_appointments.build(appointment_params)
+    @appointment = Appointment.create(appointment_params)
+    @appointment.doctor_id = current_user.id
 
     respond_to do |format|
       if @appointment.save
+        @appointments = Appointment.all
         format.html { redirect_to @appointment, notice: 'Appointment was successfully created.' }
         format.json { render :show, status: :created, location: @appointment }
         format.js
       else
-        @patients = Patient.all
+        @patients = User.patients
         format.html { render :new }
         format.json { render json: @appointment.errors, status: :unprocessable_entity }
         format.js
@@ -74,6 +79,11 @@ class AppointmentsController < ApplicationController
     end
   end
 
+
+  def delete
+      @appointment = Appointment.find(params[:appointment_id])
+    end
+
   # DELETE /appointments/1
   # DELETE /appointments/1.json
   def destroy
@@ -92,6 +102,6 @@ class AppointmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def appointment_params
-      params.require(:appointment).permit(:reason, :doctor_id, :structure_id,  :content, :day, :start_time, :end_time, :status)
+      params.require(:appointment).permit(:reason, :patient_id,   :content, :day, :start_time, :end_time, :status)
     end
 end

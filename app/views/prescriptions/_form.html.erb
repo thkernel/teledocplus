@@ -15,7 +15,7 @@
   <div class="row">
     <div class="col-md-6 form-group ">
       <%= form.label :patient_id, class: "required" %>
-         <%= form.collection_select :patient_id,  @patients, :id, :phone, {prompt: "Sélectionner"}, style: "width: 100%",  class: "form-control", required: true %>
+         <%= form.collection_select :patient_id,  @patients, :id, :full_name, {prompt: "Sélectionner"}, style: "width: 100%",  class: "form-control", required: true %>
 
     </div>
   </div>

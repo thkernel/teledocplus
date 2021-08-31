@@ -9,7 +9,7 @@ module UsersHelper
 	
 
     def thumb_avatar(width)
-		profile = current_user.profile
+		profile = current_user.userable
 		
         if profile && profile.avatar.attached?
             image_tag profile.avatar,  class: "wd-#{width} rounded-circle", alt: "Avatar"
@@ -19,7 +19,7 @@ module UsersHelper
     end
 
     def user_thumb_avatar(user, alt, width)
-		profile = user.profile
+		profile = user.userable
 		
         if profile && profile.avatar.attached?
             image_tag profile.avatar,  class: "wd-#{width} rounded-circle", alt: "Avatar"

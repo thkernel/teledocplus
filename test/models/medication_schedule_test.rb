@@ -7,11 +7,10 @@
 #  doctor_id      :bigint
 #  patient_id     :bigint
 #  morning_number :string
-#  noo_number     :string
+#  noon_number    :string
 #  evening_number :string
 #  status         :string
 #  comments       :text
-#  user_id        :bigint           not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #

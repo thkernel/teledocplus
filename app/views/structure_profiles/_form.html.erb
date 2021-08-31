@@ -1,32 +1,87 @@
-<%= form_with(model: structure_profile, local: true) do |form| %>
-  <% if structure_profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(structure_profile.errors.count, "error") %> prohibited this structure_profile from being saved:</h2>
+<%= form_with(model: structure_profile, local: false) do |form| %>
+   <div class="modal-body">
+		<ul class="errors">
+    	</ul>
 
-      <ul>
-      <% structure_profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= form.label :structure_type_id, "Type de structure", class: "required" %>
+          <%= form.collection_select :structure_type_id , @structure_types, :id, :name, {prompt: "Sélectionner"}, class: "form-control",style: "width: 100%", required: true %>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= form.label :name, "Nom", class: "required" %>
+          <%= form.text_field :name, class: "form-control", placeholder: "Nom", required: true %>
+        </div>
+      </div>
     </div>
-  <% end %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= form.label :address, "Adresse", class: "required" %>
+          <%= form.text_field :address, class: "form-control", placeholder: "Adresse", required: true %>
+        </div>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :structure_id %>
-    <%= form.text_field :structure_id %>
-  </div>
+    <div class="row">
+      <div class="col-md-4">
+         <div class="form-group">
+          <%= form.label :phone, "Téléphone", class: "required" %>
+          <%= form.text_field :phone, class: "form-control", placeholder: "Téléphone", required: true %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= form.label :country, "Pays", class: "required" %>
+          <%= form.collection_select :country_id, @countries, :id, :name, {prompt: "Sélectionner"}, class: "form-control" , style: "width: 100%", required: true %> 
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= form.label :locality , "Localité", class: "required" %>
+          <%= form.text_field :locality,class: "form-control", required: true %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= form.label :email, class: "required" %>
+          <%= form.email_field :email, class: "form-control", placeholder: "Email" %>
+        </div>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :profile_id %>
-    <%= form.text_field :profile_id %>
-  </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= form.label :latitude %>
+          <%= form.text_field :latitude, class: "form-control", placeholder: "Latitude" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= form.label :longitude %>
+          <%= form.text_field :longitude, class: "form-control", placeholder: "Longitude" %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= form.label :logo, "Logo" %>
+          <%= form.file_field :logo,  placeholder: "Logo", class: "form-control" %>
+        </div>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  </div><!-- modal body -->
+  <div class="modal-footer">
+    <%= link_to "Annuler", "#", class: "btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", data: {dismiss: "modal"} %>
+    <%= form.submit "Enregistrer", class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
   </div>
 <% end %>

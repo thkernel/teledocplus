@@ -73,6 +73,8 @@ module ApplicationHelper
         end
 	end
 
+	
+
 
 	def smtp_config?
 		config = SmtpConfig.take

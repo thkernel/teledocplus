@@ -4,39 +4,38 @@
     </ul>
 
 
-    <%= form.hidden_field :doctor_id, class: "form-control", required: true %>
-    <%= form.hidden_field :structure_id, class: "form-control", required: true %>
+    
 <div class="form-group ">
       <%= form.label :patient_id, class: "required" %>
-         <%= form.collection_select :patient_id,  @patients, :id, :phone, {prompt: "Sélectionner"}, style: "width: 100%",  class: "form-control", required: true %>
+         <%= form.collection_select :patient_id,  @patients, :id, :full_name, {prompt: "Sélectionner"}, style: "width: 100%",  class: "form-control", required: true %>
 
     </div>
 
 <div class="form-group">
-    <%= form.label :reason, "Motif" %>
-    <%= form.text_field :reason, class: "form-control", placeholder: "Motif de consultation", required: true %>
+    <%= form.label :reason, "Motif", class: "required" %>
+    <%= form.text_field :reason, class: "form-control", placeholder: "Motif ", required: true %>
   </div>
 
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        <%= form.label :day, "Jour" %>
-        <%= form.date_field :day, class: "form-control" %>
+        <%= form.label :day, "Jour", class: "required" %>
+        <%= form.date_field :day, class: "form-control", required: true %>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
-        <%= form.label :start_time, "Heure début" %>
-        <%= form.time_field :start_time, class: "form-control" %>
+        <%= form.label :start_time, "Heure début", class: "required" %>
+        <%= form.time_field :start_time, class: "form-control", required: true %>
       </div>
     </div>
 
     <div class="col-md-6">
       <div class="form-group">
-        <%= form.label :end_time, "Heure fin" %>
-        <%= form.time_field :end_time, class: "form-control" %>
+        <%= form.label :end_time, "Heure fin", class: "required" %>
+        <%= form.time_field :end_time, class: "form-control", required: true  %>
       </div>
     </div>
   </div>

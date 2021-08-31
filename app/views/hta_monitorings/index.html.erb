@@ -1,37 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+<div class="br-pageheader">
+      <nav class="breadcrumb pd-0 mg-0 tx-12">
+        
+        <span class="breadcrumb-item active"><h5>Suivis HTA</h5></span>
+      </nav>
+    </div><!-- br-pageheader -->
+<div class="br-pagebody mg-b-30">
+  <div class="br-section-wrapper">
+    <div class="headers mg-b-20">
+        <div class="left-content">
+        </div>
 
-<h1>Hta Monitorings</h1>
+        <div class="text-right">
+        
+            
+        
+        </div>
 
-<table>
+    </div>
+
+
+<table id="datatable1" class="table display responsive nowrap">
+
+
   <thead>
     <tr>
       <th>Patient</th>
-      <th>Tas</th>
-      <th>Tad</th>
-      <th>Status</th>
-      <th>Comments</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>TAS</th>
+      <th>TAD</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @hta_monitorings.each do |hta_monitoring| %>
-      <tr>
-        <td><%= hta_monitoring.patient_id %></td>
-        <td><%= hta_monitoring.tas %></td>
-        <td><%= hta_monitoring.tad %></td>
-        <td><%= hta_monitoring.status %></td>
-        <td><%= hta_monitoring.comments %></td>
-        <td><%= hta_monitoring.user_id %></td>
-        <td><%= link_to 'Show', hta_monitoring %></td>
-        <td><%= link_to 'Edit', edit_hta_monitoring_path(hta_monitoring) %></td>
-        <td><%= link_to 'Destroy', hta_monitoring, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody class="hta-monitorings">
+    <%= render "index" %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Hta Monitoring', new_hta_monitoring_path %>
+</div>
+</div>
+</div>
+<div id="hta-monitoring-modal" class="c-modal modal fade" data-backdrop="static"></div>

@@ -1,0 +1,10 @@
+$("ul.errors").html("");
+<% if @doctor_profile.errors.any? %>
+  <% @doctor_profile.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"));
+  <% end %>
+<% else %>
+  $(".doctors").html("<%= escape_javascript(render 'index') %>");
+  $("#doctor-modal").modal("hide");
+ 
+<% end %>

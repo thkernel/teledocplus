@@ -5,7 +5,7 @@ class CreatePrescriptions < ActiveRecord::Migration[6.1]
       t.references :doctor,  index: true
       t.references :patient,  index: true
       t.string :status
-      t.references :user, null: false, foreign_key: true
+      #t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

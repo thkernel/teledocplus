@@ -1,0 +1,26 @@
+
+<% @doctor_profiles.each do |doctor| %>
+    <tr>
+    
+    <td><%= doctor.first_name %></td>
+    <td><%= doctor.last_name %></td>
+    <td><%= doctor.civility %></td>
+    <td><%= doctor.speciality.name %></td>
+    <td><%= doctor.phone %></td>
+    <td><%= doctor.country.name %></td>
+    <td><%= doctor.locality %></td>
+   
+    <td>
+			<div class="action-buttons">
+				<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_doctor_profile_path(doctor), title: "Modifier", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), doctor_profile_delete_path(doctor), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+    </tr>
+<% end %>

@@ -14,7 +14,7 @@ class MedicationSchedulesController < ApplicationController
 
   # GET /medication_schedules/new
   def new
-    @patients = Patient.all
+    @patients = PatientProfile.all
     @medication_schedule = MedicationSchedule.new
   end
 
@@ -29,11 +29,13 @@ class MedicationSchedulesController < ApplicationController
     @medication_schedule.doctor_id = current_user.id
     respond_to do |format|
       if @medication_schedule.save
+        @medication_schedules = MedicationSchedule.all
+
         format.html { redirect_to @medication_schedule, notice: "Medication schedule was successfully created." }
         format.json { render :show, status: :created, location: @medication_schedule }
         format.js
       else
-        @patients = Patient.all
+        @patients = PatientProfile.all
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @medication_schedule.errors, status: :unprocessable_entity }
         format.js
@@ -45,6 +47,7 @@ class MedicationSchedulesController < ApplicationController
   def update
     respond_to do |format|
       if @medication_schedule.update(medication_schedule_params)
+        @medication_schedules = MedicationSchedule.all
         format.html { redirect_to @medication_schedule, notice: "Medication schedule was successfully updated." }
         format.json { render :show, status: :ok, location: @medication_schedule }
         format.js
@@ -77,6 +80,6 @@ class MedicationSchedulesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def medication_schedule_params
-      params.require(:medication_schedule).permit(:patient_id, :morning_number, :noo_number, :evening_number,  :comments)
+      params.require(:medication_schedule).permit(:patient_id, :morning_number, :noon_number, :evening_number,  :comments)
     end
 end

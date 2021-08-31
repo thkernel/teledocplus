@@ -1,0 +1,21 @@
+<% @hta_monitorings.each do |hta_monitoring| %>
+  <tr>
+    <td><%= hta_monitoring.patient_id %></td>
+    <td><%= hta_monitoring.tas %></td>
+    <td><%= hta_monitoring.tad %></td>
+    <td>
+            <div class="action-buttons">
+              
+
+                <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_hta_monitoring_path(hta_monitoring), title: "Modifier", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), hta_monitoring_delete_path(hta_monitoring), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+  </tr>
+<% end %>

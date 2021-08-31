@@ -1,10 +1,11 @@
 class CreateAppointments < ActiveRecord::Migration[6.1]
   def change
     create_table :appointments do |t|
+      t.string :uid
       t.references :patient, index: true
       t.references :doctor, index: true
       t.string :reason
-      t.string :day
+      t.date :day
       t.time :start_time
       t.time :end_time
       t.text :content

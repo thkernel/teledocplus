@@ -4,6 +4,8 @@ $("ul.errors").html("");
     $("ul.errors").append($("<li />").html("<%= message.html_safe %>"));
   <% end %>
 <% else %>
+  $(".appointments").html("<%= escape_javascript(render 'index') %>");
+
   $("#appointment-modal").modal("hide");
  
 <% end %>

@@ -1,4 +1,7 @@
 class StructureProfilesController < ApplicationController
+  before_action :authenticate_user!
+  layout "dashboard"
+
   before_action :set_structure_profile, only: [:show, :edit, :update, :destroy]
 
   # GET /structure_profiles
@@ -14,11 +17,15 @@ class StructureProfilesController < ApplicationController
 
   # GET /structure_profiles/new
   def new
+    @structure_types = StructureType.all
+    @countries = Country.all
     @structure_profile = StructureProfile.new
   end
 
   # GET /structure_profiles/1/edit
   def edit
+    @countries = Country.all
+    @structure_types = StructureType.all
   end
 
   # POST /structure_profiles
@@ -28,11 +35,16 @@ class StructureProfilesController < ApplicationController
 
     respond_to do |format|
       if @structure_profile.save
+        @structure_profiles = StructureProfile.all
         format.html { redirect_to @structure_profile, notice: 'Structure profile was successfully created.' }
         format.json { render :show, status: :created, location: @structure_profile }
+        format.js
       else
+        @countries = Country.all
+        @structure_types = StructureType.all
         format.html { render :new }
         format.json { render json: @structure_profile.errors, status: :unprocessable_entity }
+        format. js
       end
     end
   end
@@ -42,14 +54,23 @@ class StructureProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @structure_profile.update(structure_profile_params)
+        @structure_profiles = StructureProfile.all
         format.html { redirect_to @structure_profile, notice: 'Structure profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @structure_profile }
+        format.js
       else
+        @countries = Country.all
+        @structure_types = StructureType.all
         format.html { render :edit }
         format.json { render json: @structure_profile.errors, status: :unprocessable_entity }
       end
     end
   end
+
+
+  def delete
+      @structure_profile = StructureProfile.find(params[:structure_profile_id])
+    end
 
   # DELETE /structure_profiles/1
   # DELETE /structure_profiles/1.json
@@ -69,6 +90,7 @@ class StructureProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def structure_profile_params
-      params.require(:structure_profile).permit(:structure_id, :profile_id, :status)
+      params.require(:structure_profile).permit(:structure_type_id, :name, :address, :phone, :country_id, :locality, :email, :latitude, :longitude, :consultation_price )
     end
 end
+

@@ -9,7 +9,6 @@
 #  posologie       :string
 #  comments        :text
 #  status          :string
-#  user_id         :bigint           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

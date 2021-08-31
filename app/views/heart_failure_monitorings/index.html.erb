@@ -1,43 +1,42 @@
-<p id="notice"><%= notice %></p>
+<div class="br-pageheader mg-30">
+      <nav class="breadcrumb pd-0 mg-0 tx-12">
+        
+        <span class="breadcrumb-item active"><h5>Suivis faiblesse cardiaque</h5></span>
+      </nav>
+    </div><!-- br-pageheader -->
+<div class="br-pagebody mg-b-20">
+  <div class="br-section-wrapper">
+    <div class="headers mg-b-20">
+        <div class="left-content">
+        </div>
 
-<h1>Heart Failure Monitorings</h1>
+        <div class="text-right">
+           
+        </div>
 
-<table>
+    </div>
+
+
+<table id="datatable1" class="table display responsive nowrap">
+
+
   <thead>
     <tr>
-      <th>Uid</th>
+     
       <th>Patient</th>
       <th>Weight</th>
       <th>Cardiac frequency</th>
       <th>Breathlessness</th>
       <th>Feet swelling</th>
-      <th>Status</th>
-      <th>Comments</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @heart_failure_monitorings.each do |heart_failure_monitoring| %>
-      <tr>
-        <td><%= heart_failure_monitoring.uid %></td>
-        <td><%= heart_failure_monitoring.patient_id %></td>
-        <td><%= heart_failure_monitoring.weight %></td>
-        <td><%= heart_failure_monitoring.cardiac_frequency %></td>
-        <td><%= heart_failure_monitoring.breathlessness %></td>
-        <td><%= heart_failure_monitoring.feet_swelling %></td>
-        <td><%= heart_failure_monitoring.status %></td>
-        <td><%= heart_failure_monitoring.comments %></td>
-        <td><%= heart_failure_monitoring.user_id %></td>
-        <td><%= link_to 'Show', heart_failure_monitoring %></td>
-        <td><%= link_to 'Edit', edit_heart_failure_monitoring_path(heart_failure_monitoring) %></td>
-        <td><%= link_to 'Destroy', heart_failure_monitoring, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+ <tbody class="heart-faillure-monitorings">
+    <%= render "index"%>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Heart Failure Monitoring', new_heart_failure_monitoring_path %>
+</div>
+</div>
+<div id="heart-faillure-monitoring-modal" class="c-modal modal fade" data-backdrop="static"></div>

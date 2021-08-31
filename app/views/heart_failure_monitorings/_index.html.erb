@@ -1,0 +1,16 @@
+<% @heart_failure_monitorings.each do |heart_failure_monitoring| %>
+  <tr>
+    <td><%= heart_failure_monitoring.uid %></td>
+    <td><%= heart_failure_monitoring.patient_id %></td>
+    <td><%= heart_failure_monitoring.weight %></td>
+    <td><%= heart_failure_monitoring.cardiac_frequency %></td>
+    <td><%= heart_failure_monitoring.breathlessness %></td>
+    <td><%= heart_failure_monitoring.feet_swelling %></td>
+    <td><%= heart_failure_monitoring.status %></td>
+    <td><%= heart_failure_monitoring.comments %></td>
+    <td><%= heart_failure_monitoring.user_id %></td>
+    <td><%= link_to 'Show', heart_failure_monitoring %></td>
+    <td><%= link_to 'Edit', edit_heart_failure_monitoring_path(heart_failure_monitoring) %></td>
+    <td><%= link_to 'Destroy', heart_failure_monitoring, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>

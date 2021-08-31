@@ -1,4 +1,7 @@
 class HtaMonitoringsController < ApplicationController
+  before_action :authenticate_user!
+  layout "dashboard"
+  
   before_action :set_hta_monitoring, only: %i[ show edit update destroy ]
 
   # GET /hta_monitorings or /hta_monitorings.json

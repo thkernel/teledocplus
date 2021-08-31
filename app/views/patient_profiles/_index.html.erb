@@ -1,0 +1,31 @@
+
+<% @patient_profiles.each do |patient| %>
+			  <tr>
+			  		
+					<td><%= patient.last_name %></td>
+					<td><%= patient.first_name %></td>
+					<td><%= patient.civility %></td>
+					<td><%= patient.age %></td>
+					<td><%= patient.country.name %></td>
+					<td><%= patient.locality %></td>
+					<td><%= patient.phone %></td>
+					
+					
+
+
+					<td>
+					<div class="action-buttons">
+					<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_patient_profile_path(patient), title: "Modifier", remote: true %>
+
+
+
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), patient_profile_delete_path(patient), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+
+			  </tr>
+			<% end %>
+		

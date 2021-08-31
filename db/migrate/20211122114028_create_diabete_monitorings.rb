@@ -14,7 +14,7 @@ class CreateDiabeteMonitorings < ActiveRecord::Migration[6.1]
       t.boolean :amaigrissement
       t.text :comments
       t.string :status
-      t.references :user, null: false, foreign_key: true
+      #t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

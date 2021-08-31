@@ -1,0 +1,103 @@
+<%= form_with(model: patient_profile, local: false) do |form| %>
+   <div class="modal-body">
+    <ul class="errors">
+      </ul>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+              <%= form.label :first_name, "Prénom", class: "required" %>
+              <%= form.text_field :first_name, class: "form-control", placeholder: "Prénom", required: true %>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+              <%= form.label :last_name, "Nom", class: "required" %>
+              <%= form.text_field :last_name, class: "form-control", placeholder: "Nom", required: true %>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+              <%= form.label :civility, "Sexe", class: "required" %>
+              <%= form.select :civility , GENDERS, {prompt: "Sélectionner"}, class: "form-control",style: "width: 100%", required: true %>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+            <div class="form-group">
+              <%= form.label :age, "Âge", class: "required" %>
+              <%= form.text_field :age ,  class: "form-control", placeholder: "Âge", required: true %>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+              <%= form.label :address, "Adresse" %>
+              <%= form.text_field :address, class: "form-control", placeholder: "Adresse", required: true %>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+              <%= form.label :phone, "Téléphone", class: "required" %>
+              <%= form.text_field :phone, class: "form-control", placeholder: "Téléphone", required: true %>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+            <%= form.label :country, "Pays", class: "required" %>
+            <%= form.collection_select :country_id, @countries, :id, :name, {prompt: "Sélectionner"}, class: "form-control" , style: "width: 100%", required: true %> 
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+              <%= form.label :locality , "Localité", class: "required" %>
+              <%= form.text_field :locality,class: "form-control", placeholder: "Localité", required: true %>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+          <div class="form-group">
+            <%= form.label :pathology , "Pathologie", class: "required" %>
+            <%= form.text_field :pathology,class: "form-control", placeholder: "Pathologie",required: true %>
+          </div>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+            <%= form.label :monitoring_frequency , "Fréquence de consultation", class: "required" %>
+            <%= form.text_field :monitoring_frequency,class: "form-control", placeholder: "Fréquence de consultation",required: true %>
+          </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+              <%= form.label :email, class: "required" %>
+              <%= form.email_field :email, class: "form-control", placeholder: "Email" %>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+              <%= form.label :description , "Description" %>
+              <%= form.text_area :description,class: "form-control" %>
+            </div>
+        </div>
+
+    
+
+  
+
+  </div><!-- modal body -->
+  <div class="modal-footer">
+    <%= link_to "Annuler", "#", class: "btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", data: {dismiss: "modal"} %>
+    <%= form.submit  class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+  </div>
+<% end %>

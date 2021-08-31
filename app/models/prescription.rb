@@ -7,15 +7,19 @@
 #  doctor_id  :bigint
 #  patient_id :bigint
 #  status     :string
-#  user_id    :bigint           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 class Prescription < ApplicationRecord
-  belongs_to :doctor
-  belongs_to :patient
-  belongs_to :user
+	# Include shared utils.
+  include SharedUtils::Generate
+
+  before_save :generate_random_number_uid
+  
+  belongs_to :patient, :foreign_key => "patient_id", :class_name => "User"
+  belongs_to :doctor, :foreign_key => "doctor_id", :class_name => "User"
+  #belongs_to :user
 
 
   has_many :prescription_items, dependent: :destroy

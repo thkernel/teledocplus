@@ -37,18 +37,18 @@ Rails.application.routes.draw do
     get "delete"
   end
 
-  resources :patients do    
+  resources :patient_profiles, path: "patients" do    
     get "delete"
   end
 
 
   
   
-  resources :doctors do    
+  resources :doctor_profiles, path: "doctors" do    
     get "delete"
   end
 
-  resources :structures do    
+  resources :structure_profiles, path: "structures" do    
     get "delete"
   end
 
@@ -64,19 +64,8 @@ Rails.application.routes.draw do
   resources :subscriptions  do    
     get "delete"
   end
-  resources :subscription_types do    
-    get "delete"
-  end
-  resources :subscription_pack_items do    
-    get "delete"
-  end
-  resources :subscription_packs do    
-    get "delete"
-  end
   
-  resources :subscription_pack_features do    
-    get "delete"
-  end
+  
   
   resources :activity_fields do    
     get "delete"

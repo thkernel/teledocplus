@@ -8,6 +8,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :uid
       t.string 	:login
       t.references :role, foreign_key: true
+      t.references :userable, polymorphic: true, index: true
+
       t.string :status
 	  
       ## Database authenticatable

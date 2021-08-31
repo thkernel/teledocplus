@@ -18,7 +18,7 @@
         
         <ul class="list-unstyled user-profile-nav">
             
-            <li><%= link_to "Mon profil" ,   edit_account_path(current_user.profile.uid), class: "dropdown-item" %> </li>
+            <li><%= link_to "Mon profil" ,   edit_account_path(current_user.userable.uid), class: "dropdown-item" %> </li>
             <div class="dropdown-divider"></div>
             <li><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete,  class: "dropdown-item"  %></li>
 

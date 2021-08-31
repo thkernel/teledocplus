@@ -1,0 +1,24 @@
+<% @diabete_monitorings.each do |diabete_monitoring| %>
+  <tr>
+    <td><%= diabete_monitoring.uid %></td>
+    <td><%= diabete_monitoring.patient_id %></td>
+    <td><%= diabete_monitoring.glycemie_a_jeun %></td>
+    <td><%= diabete_monitoring.sueurs %></td>
+    <td><%= diabete_monitoring.sensation_de_faim %></td>
+    <td><%= diabete_monitoring.tremblement %></td>
+    <td><%= diabete_monitoring.vertige %></td>
+    <td><%= diabete_monitoring.irritabilite %></td>
+    <td><%= diabete_monitoring.polyurie_majoree %></td>
+    <td><%= diabete_monitoring.fatigue_majoree %></td>
+    <td><%= diabete_monitoring.amaigrissement %></td>
+    <td>
+        <div class="action-buttons">
+            <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_diabete_monitoring_path(diabete_monitoring), title: "Modifier", remote: true %>
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), diabete_monitoring_delete_path(diabete_monitoring), remote: true, title: "Supprimer", class: "delete" %>
+</div>
+</td>
+  </tr>
+<% end %>

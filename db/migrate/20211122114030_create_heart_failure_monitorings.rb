@@ -9,7 +9,7 @@ class CreateHeartFailureMonitorings < ActiveRecord::Migration[6.1]
       t.boolean :feet_swelling
       t.string :status
       t.text :comments
-      t.references :user, null: false, foreign_key: true
+      #t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

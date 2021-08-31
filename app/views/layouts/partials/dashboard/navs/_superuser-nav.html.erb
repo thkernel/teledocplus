@@ -6,28 +6,28 @@
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-          <%= link_to  raw('<i class="fa fa-book tx-20"></i> <span class="menu-item-label">Rendez-vous</span>'), appointments_path, class: "br-menu-link" %>
+          <%= link_to  raw('<i class="fa fa-calendar tx-20"></i> <span class="menu-item-label">Rendez-vous</span>'), appointments_path, class: "br-menu-link #{current? "active", appointments_path}" %>
         </li><!-- br-menu-item -->
 
         
         <li class="br-menu-item">
-          <%= link_to  raw('<i class="fa fa-user-plus tx-20"></i> <span class="menu-item-label">Ordonnances</span>'), prescriptions_path, class: "br-menu-link #{current? "active", prescriptions_path}" %>
+          <%= link_to  raw('<i class="fa fa-file-text-o tx-20"></i> <span class="menu-item-label">Ordonnances</span>'), prescriptions_path, class: "br-menu-link #{current? "active", prescriptions_path}" %>
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-          <%= link_to  raw('<i class="fa fa-user-plus tx-20"></i> <span class="menu-item-label">Patients</span>'), patients_path, class: "br-menu-link" %>
+          <%= link_to  raw('<i class="fa fa-bed tx-20"></i> <span class="menu-item-label">Patients</span>'), patient_profiles_path, class: "br-menu-link #{current? "active", patient_profiles_path}" %>
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-          <%= link_to  raw('<i class="fa fa-user-plus tx-20"></i> <span class="menu-item-label">Médecins</span>'), doctors_path, class: "br-menu-link" %>
+          <%= link_to  raw('<i class="fa fa-user-md tx-20"></i> <span class="menu-item-label">Médecins</span>'), doctor_profiles_path, class: "br-menu-link #{current? "active", doctor_profiles_path}" %>
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-          <%= link_to  raw('<i class="fa fa-user-plus tx-20"></i> <span class="menu-item-label">Structures</span>'), structures_path, class: "br-menu-link" %>
+          <%= link_to  raw('<i class="fa fa-hospital-o tx-20"></i> <span class="menu-item-label">Structures</span>'), structure_profiles_path, class: "br-menu-link #{current? "active", structure_profiles_path}" %>
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-          <%= link_to  raw('<i class="fa fa-user-plus tx-20"></i> <span class="menu-item-label">Prise de médicaments</span>'), medication_schedules_path, class: "br-menu-link #{current? "active", medication_schedules_path}" %>
+          <%= link_to  raw('<i class="fa fa-clock-o tx-20"></i> <span class="menu-item-label">Prise de médicaments</span>'), medication_schedules_path, class: "br-menu-link #{current? "active", medication_schedules_path}" %>
         </li><!-- br-menu-item -->
 
 
@@ -35,7 +35,7 @@
 
         <li class="br-menu-item">
           <a href="#" class="br-menu-link with-sub">
-            <i class="fa fa-building-o tx-20"></i>
+            <i class="fa fa-medkit tx-20"></i>
             <span class="menu-item-label">Suivis</span>
           </a><!-- br-menu-link -->
           <ul class="br-menu-sub">

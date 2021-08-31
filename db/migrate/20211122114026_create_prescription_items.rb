@@ -7,7 +7,7 @@ class CreatePrescriptionItems < ActiveRecord::Migration[6.1]
       t.string :posologie
       t.text :comments
       t.string :status
-      t.references :user, null: false, foreign_key: true
+      #t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

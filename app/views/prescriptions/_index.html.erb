@@ -1,12 +1,12 @@
 <% @prescriptions.each do |prescription| %>
   <tr>
-    <td><%= prescription.created_at %></td>
-    <td><%= prescription.doctor_id %></td>
-    <td><%= prescription.patient_id %></td>
+    <td><%= prescription.created_at.strftime("%d/%m/%Y") %></td>
+    <td><%= prescription.doctor.userable.full_name %></td>
+    <td><%= prescription.patient.userable.full_name %></td>
     <td>
         <div class="action-buttons">
             <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
-'),  edit_prescription_path(prescription), title: "Modifier", remote: true %>
+'),  edit_prescription_path(prescription), title: "Modifier", remote: false %>
 
 
 

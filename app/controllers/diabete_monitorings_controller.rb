@@ -1,4 +1,7 @@
 class DiabeteMonitoringsController < ApplicationController
+  before_action :authenticate_user!
+  layout "dashboard"
+  
   before_action :set_diabete_monitoring, only: %i[ show edit update destroy ]
 
   # GET /diabete_monitorings or /diabete_monitorings.json

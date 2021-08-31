@@ -1,16 +1,15 @@
 <% @appointments.each do |appointment| %>
     <tr>
-    <td><%= appointment.patient_id %></td>
-    <td><%= doctor(appointment.doctor_id) %></td>
+    <td><%= appointment.patient.userable.full_name %></td>
     <td><%= appointment.reason %></td>
     <td><%= appointment.day %></td>
-    <td><%= appointment.start_time %></td>
-    <td><%= appointment.end_time %></td>
+    <td><%= appointment.start_time.strftime("%H:%M") %></td>
+    <td><%= appointment.end_time.strftime("%H:%M") %></td>
     <td><%= appointment.status %></td>
 
         <td>
 			<div class="action-buttons">
-				<%= link_to raw('<i class="fa fa-check" aria-hidden="true"></i>
+				<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
 '), edit_appointment_path(appointment), title: "Valider", remote: true %>
 
 

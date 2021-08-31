@@ -24,7 +24,7 @@ unless Role.all.present?
             {name: "Assistant"},
             {name: "Manager"},
             {name: "Patient"},
-            {name: "Médedcin"},
+            {name: "Médecin"},
             {name: "Structure"},
             
             
@@ -35,20 +35,43 @@ else
 end
 
 
+#Profiles
+unless UserProfile.all.present?
+profiles = UserProfile.create([
+    {
+        first_name: "Amos", 
+        last_name: "DEMBELE"
+    },
+    {
+        first_name: "Admin", 
+        last_name: "Admin"
+    },
+    {
+        first_name: "Fréderic", 
+        last_name: "KOLANE"
+    }
+])
+else
+    profiles = UserProfile.all
+end
 
 
 # Users
 unless User.all.present?
+
     users = User.create([
-        {login: "superuser",  email: "superuser@gmail.com",  password: "AMOSXZIBITDE88", password_confirmation: "AMOSXZIBITDE88", role_id: Role.find_by(name: "superuser").id},
-        {login: "teledocplus", email: "teledocplus@gmail.com", password: "Root@2021@#!*", password_confirmation: "Root@2021@#!*", role_id: Role.find_by(name: "superuser").id},
-        {login: "kolane",  email: "kolanefrederic@gmail.com",  password: "Root@2021@#!*", password_confirmation: "Root@2021@#!*", role_id: Role.find_by(name: "Administrateur").id}
-
-
+        {userable: profiles[0], login: "superuser",  email: "superuser@gmail.com",  password: "AMOSXZIBITDE88", password_confirmation: "AMOSXZIBITDE88", role_id: Role.find_by(name: "superuser").id},
+        {userable: profiles[1],login: "admin", email: "teledocplus@gmail.com", password: "Root@2021@#!*", password_confirmation: "Root@2021@#!*", role_id: Role.find_by(name: "superuser").id},
+        {userable: profiles[2],login: "kolane",  email: "kolanefrederic@gmail.com",  password: "Root@2021@#!*", password_confirmation: "Root@2021@#!*", role_id: Role.find_by(name: "Administrateur").id}
     
     ])
-else   
-    users = User.all
+
+    
+    #User.create(, login: "superuser",  email: "superuser@gmail.com",  password: "AMOSXZIBITDE88", password_confirmation: "AMOSXZIBITDE88", role_id: Role.find_by(name: "superuser").id)
+    #users = User.all
+else
+
+     users = User.all
 end
 
 
@@ -80,41 +103,7 @@ end
 
 
 
-#Profiles
-unless Profile.all.present?
-    profiles = Profile.create([
-        {
-            first_name: "Amos", 
-            last_name: "DEMBELE",
-            #phone: "00000000",
-            #country_id: countries.first.id,
-            #locality: "Bamako",
-            user_id: users.first.id,
-            
-             
-        },
-        {
-            first_name: "Kolane", 
-            last_name: "Fréderick",
-            #phone: "11111111",
-            #country_id: countries.first.id,
-            #locality: "Bamako",
-            user_id: users.last.id,
-            
-        },
-        {
-            first_name: "Ko-Santé+", 
-            last_name: "SARL",
-            #phone: "22222222",
-            #country_id: countries.first.id,
-            #locality: "Bamako",
-            user_id: User.find_by(login: "teledocplus").id,
-            
-        }
-    
-    ])
 
-end
 
 
 #Strcuture types
@@ -208,23 +197,7 @@ else
 
 end
 
-#Structures
-unless Structure.all.present?
-    structures = Structure.create([
-        {
-            name: "Ko-Sante", 
-            address: "Koulouba",
-            phone: "00000000",
-            #locality: "Bamako",
-            user_id: User.find_by(login: "kolane").id
-             
-        }
-    
-    ])
-else
-    structures = Structure.all
 
-end
 
 
 

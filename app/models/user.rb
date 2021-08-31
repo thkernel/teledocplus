@@ -3,9 +3,11 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
+#  uid                    :string
 #  login                  :string
 #  role_id                :bigint
-#  uid                    :string
+#  userable_type          :string
+#  userable_id            :bigint
 #  status                 :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
@@ -48,27 +50,43 @@ class User < ApplicationRecord
 
 
   # Relationships
-  has_one :profile, dependent: :destroy
+  belongs_to :userable, polymorphic: true, optional: true
+
+  #has_one :profile, dependent: :destroy
   belongs_to :role
   
   has_many :structure_types, dependent: :destroy
-  has_many :structures, dependent: :destroy
+  has_many :structure_profiles, dependent: :destroy
+  has_many :doctor_profiles, dependent: :destroy
+  has_many :patient_profiles, dependent: :destroy
   has_many :specialities, dependent: :destroy
   has_many :countries, dependent: :destroy
   has_many :medication_schedules, dependent: :destroy
-  has_many :pages, dependent: :destroy
-  has_many :organizations, dependent: :destroy
-  has_many :subscriptions, dependent: :destroy
-  has_many :services, dependent: :destroy
-  has_many :portfolios, dependent: :destroy
-  has_many :invitations, dependent: :destroy
-  has_many :cards, dependent: :destroy
-	has_many :recipient_invitations, :class_name => "Invitation", :foreign_key => :recipient_id
+
+  has_many :patient_appointments, :class_name => "Appointment", :foreign_key => :patient_id
+  has_many :patient_prescriptions, :class_name => "Prescription", :foreign_key => :patient_id
+  has_many :doctor_appointments, :class_name => "Appointment", :foreign_key => :doctor_id
+  has_many :doctor_prescriptions, :class_name => "Prescription", :foreign_key => :doctor_id
+
+  has_many :patient_hta_monitorings, :class_name => "HtaMonitoring", :foreign_key => :patient_id
+  has_many :patient_diabete_monitorings, :class_name => "DiabeteMonitoring", :foreign_key => :patient_id
+  has_many :patient_heart_failure_monitorings, :class_name => "HeartFailureMonitoring", :foreign_key => :patient_id
+
+
+
+
+  #has_many :organizations, dependent: :destroy
+  #has_many :subscriptions, dependent: :destroy
+  #has_many :services, dependent: :destroy
+  #has_many :portfolios, dependent: :destroy
+  #has_many :invitations, dependent: :destroy
+  #has_many :cards, dependent: :destroy
+	#has_many :recipient_invitations, :class_name => "Invitation", :foreign_key => :recipient_id
 	#has_many :recipient_notifications, :class_name => "Notification", :foreign_key => :recipient_id
 
 
   # Add nested attributes for profile.
-  accepts_nested_attributes_for :profile
+  #accepts_nested_attributes_for :profile
 
   # Validations
   #validates :login, presence: true, uniqueness: true
@@ -101,6 +119,13 @@ class User < ApplicationRecord
       false
     end
   end
+
+
+  # Get userable full name
+  def full_name
+    self.userable.full_name
+  end
+
   
   private 
 	
@@ -119,6 +144,9 @@ class User < ApplicationRecord
   end
   
 
+
+  
+
   def self.create_from_provider_data(provider_data)
     where(provider: provider_data.provider, uid: provider_data.uid).first_or_create do | user |
       user.email = provider_data.info.email
@@ -134,5 +162,7 @@ class User < ApplicationRecord
       prefix: true
     }
   }
+
+  scope :patients, ->{where(role_id: Role.find_by(name: "Patient").id)}
  
 end

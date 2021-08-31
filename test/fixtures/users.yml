@@ -6,6 +6,8 @@
 #  uid                    :string
 #  login                  :string
 #  role_id                :bigint
+#  userable_type          :string
+#  userable_id            :bigint
 #  status                 :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
