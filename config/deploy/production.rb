@@ -14,7 +14,7 @@ set :rails_env, "production"
 server "teledocplus.ml", user: "root", roles: %w{app db web}, ssh_options: {forward_agent: true}
 
 set :branch, "master"
-set :port, 3089
+set :port, 3000
 
 
 
@@ -75,3 +75,9 @@ set :port, 3089
 #   }
 
 
+set :pty, true
+set :ssh_options, {
+  forward_agent: true,
+  auth_methods: ["publickey"],
+  keys: ["~/TELEDOCPLUS.pem"]
+}
