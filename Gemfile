@@ -124,6 +124,7 @@ group :development do
   gem 'capistrano', '~> 3.10', '>= 3.10.2'
   # For rails requirement
   gem 'capistrano-rails', '~> 1.3', '>= 1.3.1'
+   gem 'capistrano-bundler', '~> 2.0', '>= 2.0.1'
   gem 'capistrano-rails-collection', '~> 0.1.0'
   # For rvm
   #gem 'capistrano-rvm', '~> 0.1.2'

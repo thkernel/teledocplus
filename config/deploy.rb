@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.16.0"
+lock "~> 3.17.0"
 
 set :stages, %w(production staging)
 set :default_stage, "production"
@@ -53,7 +53,7 @@ set :repo_url, "https://github.com/thkernel/teledocplus.git"
 # For rbenvu usage
 # config/deploy.rb
 set :rbenv_type, :user # or :system, or :fullstaq (for Fullstaq Ruby), depends on your rbenv setup
-set :rbenv_ruby, '2.7.5'
+set :rbenv_ruby, '2.5.0'
 
 # in case you want to set ruby version from the file:
 # set :rbenv_ruby, File.read('.ruby-version').strip
