@@ -11,10 +11,10 @@ set :deploy_to, "/home/ubuntu/apps/rails/teledocplus/teledocplus.prod"   # the p
 set :rails_env, "production"
 
 #server "51.38.235.131", user: "root", roles: %w{app db web}, ssh_options: {forward_agent: true}
-server "teledocplus.ml", user: "ubuntu", roles: %w{app db web}, ssh_options: {forward_agent: true}
+server "teledocplus.ml", user: "root", roles: %w{app db web}, ssh_options: {forward_agent: true}
 
 set :branch, "master"
-set :port, 3000
+set :port, 3003
 
 
 
@@ -75,9 +75,9 @@ set :port, 3000
 #   }
 
 
-set :pty, true
-set :ssh_options, {
-  forward_agent: true,
-  auth_methods: ["publickey"],
-  keys: ["~/TELEDOCPLUS.pem"]
-}
+#set :pty, true
+#set :ssh_options, {
+  #forward_agent: true,
+  #auth_methods: ["publickey"],
+  #keys: ["~/TELEDOCPLUS.pem"]
+#}
